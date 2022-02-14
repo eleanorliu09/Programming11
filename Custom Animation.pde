@@ -39,9 +39,20 @@ void draw(){
   println();
   
   //comet
+  fill (135,206,235, 80);
+  stroke (135,206,235, 80);
+  strokeWeight(5);
+  line(comet, 30 + comet / 10 , comet-200, 10 + comet / 10);
+  line(comet, 30 + comet / 10 , comet-190, 30 + comet / 10 );
+  line(comet, 30 + comet / 10 , comet-190, -20 + comet / 10  );
+  
   fill(135,206,250);
-  stroke(206,250,90);
+  stroke(135,206,250);
   ellipse(comet, 30 + comet / 10, 60, 60);
+  
+  fill(173,216,230);
+  stroke(173,216,230);
+  ellipse(comet, 30 + comet / 10, 45, 45);
   
   fill(240,248,255);
   stroke(240,248,255);
