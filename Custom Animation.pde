@@ -1,4 +1,5 @@
 int hill1, hill2, hill3, hill4, hill5, comet, star;
+float glxy, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13, s14, s15, s16, s17, s18, s19, s20, s21, s22, s23;
 
 void setup(){
   size(800, 600);
@@ -9,11 +10,62 @@ void setup(){
   hill5 = 800;
   comet = 0;
   star = 0;
+  glxy = 0;
+  s1 = 30; 
+  s2 = 40; 
+  s3 = 50;
+  s4 = 70;
+  s5 = 120;
+  s6 = 170;
+  s7 = 190;
+  s8 = 210;
+  s9 = 260;
+  s10 = 290;
+  s11 = 356;
+  s12 = 390;
+  s13 = 423;
+  s23 = 440;
+  s14 = 490;
+  s15 = 515;
+  s16 = 542;
+  s17 = 580;
+  s18 = 600;
+  s19 = 623;
+  s20 = 700;
+  s21 = 734;
+  s22 = 770;
 }
 
 void draw(){
   //night sky
   background(25,25,112);
+  
+  stroke(138,43,226, 75);
+  fill(138,43,226, 75);
+  rect(0, 140, 800, 400);
+  
+  stroke(147,112,219, 75);
+  fill(147,112,219, 75);
+  rect(0, 260, 800, 400);
+  
+  stroke(186,85,211, 75);
+  fill(186,85,211, 75);
+  rect(0, 360, 800, 600);
+
+  stroke(221,160,221, 68);
+  fill(221,160,221, 68);
+  rect(0, 420, 800, 400);
+  
+  stroke(255,105,180, 65);
+  fill(255,105,180, 65);
+  rect(0, 460, 800, 400);
+  
+  // pink star clouds
+  stroke(255,20,147, 70);
+  fill(255,20,147, 70);
+  ellipse(glxy, 480, 120, 30);
+  ellipse(glxy + 400, 470, 120, 30);
+  glxy = (glxy >= 800 ) ? (glxy = -59.5) : (glxy += 0.5);
   
   //hills
   fill(8, 3, 43);
@@ -64,38 +116,70 @@ void draw(){
   comet = (comet >= 815) ? (comet = -15) : (comet += 10);
   
   //stars
-  drawStar(30, 100, 5);
-  drawStar(70, 750, 6);
-  drawStar(120, 120, 6);
-  drawStar(170, 170, 5);
-  drawStar(210, 90, 5);
-  drawStar(260, 250, 5);
-  drawStar(315, 170, 5);
-  drawStar(356, 100, 6);
-  drawStar(390, 110, 6);
-  drawStar(423, 150, 5);
-  drawStar(490, 750, 6);
-  drawStar(542, 90, 5);
-  drawStar(580, 50, 5);
-  drawStar(600, 170, 6);
-  drawStar(623, 200, 6);
-  drawStar(700, 120, 6);
-  drawStar(780, 160, 6);
+  drawStar(s1, 100, 5);
+  drawStar(s2, 300, 7);
+  drawStar(s3, 200, 6);
+  drawStar(s4, 20, 6);
+  drawStar(s5, 120, 6);
+  drawStar(s6, 170, 5);
+  drawStar(s7, 270, 6);
+  drawStar(s8, 90, 5);
+  drawStar(s9, 30, 5);
+  drawStar(s10, 270, 6);
+  drawStar(s11, 100, 6);
+  drawStar(s12, 110, 6);
+  drawStar(s13, 150, 5);
+  drawStar(s14, 750, 6);
+  drawStar(s15, 170, 5);
+  drawStar(s16, 90, 5);
+  drawStar(s17, 50, 5);
+  drawStar(s18, 170, 6);
+  drawStar(s19, 200, 6);
+  drawStar(s20, 120, 6);
+  drawStar(s21, 290, 6);
+  drawStar(s22 , 160, 6);
+  drawStar(s23, 250, 6);
+  
+s1 = (s1 >= 802) ? (s1 = -2) : (s1 += 0.5);
+s2 = (s2 >= 802) ? (s2 = -2) : (s2 += 0.5);
+s3 = (s3 >= 802) ? (s3 = -2) : (s3 += 0.5);
+s4 = (s4 >= 802) ? (s4 = -2) : (s4 += 0.5);
+s5 = (s5 >= 802) ? (s5 = -2) : (s5 += 0.5);
+s6 = (s6 >= 802) ? (s6 = -2) : (s6 += 0.5);
+s7 = (s7 >= 802) ? (s7 = -2) : (s7 += 0.5);
+s8 = (s8 >= 802) ? (s8 = -2) : (s8 += 0.5);
+s9 = (s9 >= 802) ? (s9 = -2) : (s9 += 0.5);
+s10 = (s10 >= 802) ? (s10 = -2) : (s10 += 0.5);
+s11 = (s11 >= 802) ? (s11 = -2) : (s11 += 0.5);
+s12 = (s12 >= 802) ? (s12 = -2) : (s12 += 0.5);
+s13 = (s13 >= 802) ? (s13 = -2) : (s13 += 0.5);
+s14 = (s14 >= 802) ? (s14 = -2) : (s14 += 0.5);
+s15 = (s15 >= 802) ? (s15 = -2) : (s15 += 0.5);
+s16 = (s16 >= 802) ? (s16 = -2) : (s16 += 0.5);
+s17 = (s17 >= 802) ? (s17 = -2) : (s17 += 0.5);
+s18 = (s18 >= 802) ? (s18 = -2) : (s18 += 0.5);
+s19 = (s19 >= 802) ? (s19 = -2) : (s19 += 0.5);
+s20 = (s20 >= 802) ? (s20 = -2) : (s20 += 0.5);
+s21 = (s21 >= 802) ? (s21 = -2) : (s21 += 0.5);
+s22 = (s22 >= 802) ? (s22 = -2) : (s22 += 0.5);
+s23 = (s23 >= 802) ? (s23 = -2) : (s23 += 0.5);
 }
 void mouseReleased() {
   noLoop(); 
 }
 
-void drawStar(int x, int y, int z){
+void drawStar(float x, int y, int z){
 
   if (star % 60 >= 30 ) {
     fill(255,215,0, 80);
     stroke(255,215,0, 80);
     ellipse(x, y, z * 3, z * 3);
-    println(star);
+    
+    // star debugging
+    // println(star);
   } 
-  // star debugging
-  // star++;
+
+  star++;
   
   fill(251, 255, 111, 90);
   stroke(251, 255, 111, 90);
