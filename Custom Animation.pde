@@ -1,5 +1,6 @@
 int hill1, hill2, hill3, hill4, hill5, comet, star;
 float glxy, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13, s14, s15, s16, s17, s18, s19, s20, s21, s22, s23;
+PFont myFont;
 
 void setup(){
   size(800, 600);
@@ -163,13 +164,21 @@ s20 = (s20 >= 802) ? (s20 = -2) : (s20 += 0.5);
 s21 = (s21 >= 802) ? (s21 = -2) : (s21 += 0.5);
 s22 = (s22 >= 802) ? (s22 = -2) : (s22 += 0.5);
 s23 = (s23 >= 802) ? (s23 = -2) : (s23 += 0.5);
+
+  // text
+  textAlign(CENTER, CENTER);
+  fill(255, 215, 0);
+  myFont = createFont("Freestyle Script", 28);
+  textFont(myFont);
+  text("if I had a star every time you passed my mind, I would have an entire galaxy", 400, 400);
+  
 }
 void mouseReleased() {
   noLoop(); 
 }
 
 void drawStar(float x, int y, int z){
-
+    
   if (star % 60 >= 30 ) {
     fill(255,215,0, 80);
     stroke(255,215,0, 80);
