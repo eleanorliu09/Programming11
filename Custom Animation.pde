@@ -3,7 +3,7 @@ float glxy, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13, s14, s15, s1
 PFont myFont;
 
 void setup(){
-  size(800, 600);
+  size(800, 600, P2D);
   hill1 = 0;
   hill2 = 240;
   hill3 = 470;
@@ -92,28 +92,7 @@ void draw(){
   //print(" hill5", hill5);
   //println();
   
-  //comet tails
-  fill (135,206,235, 80);
-  stroke (135,206,235, 80);
-  triangle(comet, 60 + comet / 10, comet, comet/10, comet-200, 20 + comet / 10);
-  
-  fill(127,255,212, 80);
-  stroke(127,255,212, 80);
-  triangle(comet, 50 + comet / 10, comet, 10 + comet/10, comet-150, 20 + comet / 10);
-  
-  //comet body
-  strokeWeight(1);
-  fill(135,206,250);
-  stroke(135,206,250);
-  ellipse(comet, 30 + comet / 10, 60, 60);
-  
-  fill(173,216,230);
-  stroke(173,216,230);
-  ellipse(comet, 30 + comet / 10, 45, 45);
-  
-  fill(240,248,255);
-  stroke(240,248,255);
-  ellipse(comet, 30 + comet/10, 30, 30);
+  drawComet(comet);
   comet = (comet >= 815) ? (comet = -15) : (comet += 10);
   
   //stars
@@ -170,7 +149,7 @@ s23 = (s23 >= 802) ? (s23 = -2) : (s23 += 0.5);
   fill(255, 215, 0);
   myFont = createFont("Freestyle Script", 28);
   textFont(myFont);
-  text("if I had a star every time you passed my mind, I would have an entire galaxy", 400, 400);
+  text("— if I had a star every time you crossed my mind, I would have an entire galaxy —", 400, 400);
   
 }
 void mouseReleased() {
@@ -198,4 +177,33 @@ void drawStar(float x, int y, int z){
   stroke(254, 255, 182);
   ellipse(x, y, z, z);
 
+}
+
+void drawComet(int x){
+  pushMatrix();
+  translate(x, 0);
+    //comet tails
+  fill (135,206,235, 80);
+  stroke (135,206,235, 80);
+  triangle(comet, 60 + comet/ 10, comet, comet/10, comet-200, 20 + comet / 10);
+  
+  fill(127,255,212, 80);
+  stroke(127,255,212, 80);
+  triangle(comet, 50 + comet / 10, comet, 10 + comet/10, comet-150, 20 + comet / 10);
+  
+  //comet body
+  strokeWeight(1);
+  fill(135,206,250);
+  stroke(135,206,250);
+  ellipse(comet, 30 + comet / 10, 60, 60);
+  
+  fill(173,216,230);
+  stroke(173,216,230);
+  ellipse(comet, 30 + comet / 10, 45, 45);
+  
+  fill(240,248,255);
+  stroke(240,248,255);
+  ellipse(comet, 30 + comet/10, 30, 30);
+   
+  popMatrix(); 
 }
