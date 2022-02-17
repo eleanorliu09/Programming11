@@ -1,9 +1,26 @@
-int hill1, hill2, hill3, hill4, hill5, comet, star;
-float glxy, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13, s14, s15, s16, s17, s18, s19, s20, s21, s22, s23;
+import ddf.minim.*;
+import ddf.minim.analysis.*;
+import ddf.minim.effects.*;
+import ddf.minim.signals.*;
+import ddf.minim.spi.*;
+import ddf.minim.ugens.*;
+
+Minim minim;
+AudioPlayer song;
+
+int hill1, hill2, hill3, hill4, hill5, comet, star, x;
+float glxy, s1x, s1y, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13, s14, s15, s16, s17, s18, s19, s20, s21, s22, s23;
 PFont myFont;
+int w;
 
 void setup(){
   size(800, 600, P2D);
+  
+  minim = new Minim(this);
+  song = minim.loadFile("Song.mp3");
+  song.play();
+
+  w = 0;
   hill1 = 0;
   hill2 = 240;
   hill3 = 470;
@@ -12,7 +29,8 @@ void setup(){
   comet = 0;
   star = 0;
   glxy = 0;
-  s1 = 30; 
+  s1x = 0; 
+  s1y = 0;
   s2 = 40; 
   s3 = 50;
   s4 = 70;
@@ -96,7 +114,7 @@ void draw(){
   comet = (comet >= 815) ? (comet = -15) : (comet += 10);
   
   //stars
-  drawStar(s1, 100, 5);
+  drawStar1(5);
   drawStar(s2, 300, 7);
   drawStar(s3, 200, 6);
   drawStar(s4, 20, 6);
@@ -120,7 +138,7 @@ void draw(){
   drawStar(s22 , 160, 6);
   drawStar(s23, 250, 6);
   
-s1 = (s1 >= 802) ? (s1 = -2) : (s1 += 0.5);
+s1x = (s1x >= 802) ? (s1x = -2) : (s1x += 0.5);
 s2 = (s2 >= 802) ? (s2 = -2) : (s2 += 0.5);
 s3 = (s3 >= 802) ? (s3 = -2) : (s3 += 0.5);
 s4 = (s4 >= 802) ? (s4 = -2) : (s4 += 0.5);
@@ -143,7 +161,7 @@ s20 = (s20 >= 802) ? (s20 = -2) : (s20 += 0.5);
 s21 = (s21 >= 802) ? (s21 = -2) : (s21 += 0.5);
 s22 = (s22 >= 802) ? (s22 = -2) : (s22 += 0.5);
 s23 = (s23 >= 802) ? (s23 = -2) : (s23 += 0.5);
-
+w = w + 10;
   // text
   textAlign(CENTER, CENTER);
   fill(255, 215, 0);
@@ -156,8 +174,33 @@ void mouseReleased() {
   noLoop(); 
 }
 
-void drawStar(float x, int y, int z){
+void drawStar1(int z) {
+ pushMatrix();
+   translate(s1x, 100+ 3*sin(0.5*radians(w)));
+   rotate(radians(w));
+  if (star % 60 >= 30 ) {
+    fill(255,215,0, 80);
+    stroke(255,215,0, 80);
+    ellipse(0, 0, z * 3, z * 3);
     
+    // star debugging
+    // println(star);
+  } 
+
+  star++;
+  
+  fill(251, 255, 111, 90);
+  stroke(251, 255, 111, 90);
+  ellipse(0, 0, z * 2, z * 2);
+  
+  fill(254, 255, 182);
+  stroke(254, 255, 182);
+  ellipse(0, 0, z, z);
+  popMatrix();
+}
+void drawStar(float x, int y, int z){
+  pushMatrix();
+   translate(0, 3*sin(0.5*radians(w)));
   if (star % 60 >= 30 ) {
     fill(255,215,0, 80);
     stroke(255,215,0, 80);
@@ -176,7 +219,7 @@ void drawStar(float x, int y, int z){
   fill(254, 255, 182);
   stroke(254, 255, 182);
   ellipse(x, y, z, z);
-
+  popMatrix();
 }
 
 void drawComet(int x){
