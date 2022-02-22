@@ -12,6 +12,8 @@ int hill1, hill2, hill3, hill4, hill5, comet, star, x;
 float glxy, s1x, s1y, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13, s14, s15, s16, s17, s18, s19, s20, s21, s22, s23;
 PFont myFont;
 int w;
+int tx1, tx2, tx3;
+String str;
 
 void setup(){
   size(800, 600, P2D);
@@ -19,7 +21,9 @@ void setup(){
   minim = new Minim(this);
   song = minim.loadFile("Song.mp3");
   song.play();
-
+  tx1 = 0;
+  tx2 = 0;
+  tx3 = 0;
   w = 0;
   hill1 = 0;
   hill2 = 240;
@@ -164,11 +168,27 @@ s23 = (s23 >= 802) ? (s23 = -2) : (s23 += 0.5);
 w = w + 10;
   // text
   textAlign(CENTER, CENTER);
-  fill(255, 215, 0);
+  String[] lines = loadStrings("list.txt");
+  fill(255, 215, 0, tx3);
   myFont = createFont("Freestyle Script", 28);
   textFont(myFont);
-  text("— if I had a star every time you crossed my mind, I would have an entire galaxy —", 400, 400);
+  if (tx2 % 600 == 0) {
+    str = lines[ (int) random(lines.length)];
+  }
   
+  if(tx1 < 100) {
+  tx3 = tx1*255/100;
+  } else if (tx1 < 500){
+  tx3 = 255;
+  } else if (tx1 < 600) {
+  tx3 = (600 - tx1)*255/100;
+  } else if (tx1 == 600){
+  tx1 = 0;
+  }
+  text(str, 400, 400);
+  
+   tx1 ++;
+   tx2 ++;
 }
 void mouseReleased() {
   noLoop(); 
