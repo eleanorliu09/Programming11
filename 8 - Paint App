@@ -1,0 +1,61 @@
+PImage prt;
+boolean on;
+
+void setup() {
+  background(64, 224, 208);
+  size(800, 600);
+  prt = loadImage("parrot.jpg");
+}
+
+void draw() {
+  fill(127, 255, 0);
+  stroke(0);
+  prtOnOff();
+  //tactile button
+  tactile(0, 0, 200, 100);
+  //strokeWeight(1);
+  image(prt, 0, 0, 200, 100);
+  rect(0, 0, 200, 100);
+}
+
+void mouseDragged() {
+  if (!on) {
+    //squiggly line
+    strokeWeight(3);
+    stroke(0);
+    line(pmouseX, pmouseY, mouseX, mouseY);
+  } else {
+    // durian drawing
+    image(prt, mouseX, mouseY, 200, 100);
+  }
+}
+
+void mouseReleased() {
+  line(pmouseX, pmouseY, mouseX, mouseY);
+  if (mouseX > 0 && mouseX < 200 && mouseY > 0 && mouseY < 100) {
+    on = !on;
+  }
+
+  if (on && ! (mouseX < 200 && mouseY < 100)) {
+    // durian drawing
+    image(prt, mouseX, mouseY, 200, 100);
+  }
+}
+
+void tactile(int x, int y, int w, int h) {
+  if (mouseX > x && mouseX < x+w && mouseY > y && mouseY < y+h) {
+    fill(255, 255, 255, 100);
+  } else {
+    fill(255, 255, 255, 0);
+  }
+}
+
+void prtOnOff() {
+  if (on) {
+    stroke(255, 0, 0);
+    strokeWeight(10);
+  } else {
+    stroke(0);
+    strokeWeight(10);
+  }
+}
