@@ -1,0 +1,34 @@
+PImage prt;
+int tgl;
+
+void setup() {
+  //background(64, 224, 208);
+  size(800, 600);
+
+  prt = loadImage("parrot.jpg");
+  strokeWeight(4);
+  tgl = 1;
+}
+
+void draw() {
+  background(64, 224, 208);
+    fill(127, 255, 0);
+  stroke(34, 139, 34);
+  rect(350, 475, 100, 50);
+  if (tgl > 0) {
+    image(prt, 100, 50);
+  }
+}
+
+
+void mouseDragged() {
+  //line(pmouseX, pmouseY, mouseX, mouseY);
+}
+
+void mouseReleased() {
+  //line(pmouseX, pmouseY, mouseX, mouseY);
+
+  if (mouseX > 350 && mouseX < 450 && mouseY > 475 && mouseY < 525) {
+    tgl = tgl * -1;
+  }
+}
