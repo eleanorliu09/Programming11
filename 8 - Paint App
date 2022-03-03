@@ -1,65 +1,178 @@
 PImage hrt;
 boolean on;
 color darkblue = #007EA7;
-color yellow = #FCBF49;
-color prussianBlue = #003049;
+color prussianBlue = #22007C;
+color currColor;
+
+//Colour Pallette Coloors
+color pink = #E56B6F;
+color red = #FF3333;
+color orange = #F58A07;
+color yellow = #EEC643;
+color yellow2 = #F4E409;
+color green = #0CCE6B;
+color blue = #68C3D4;
+color indigo = #134074;
+color violet = #893168;
+color purple = #9E768F;
+color white = #F2FDFF;
 
 void setup() {
   background(255);
   size(800, 600);
-  hrt = loadImage("heart.jpg");
+  hrt = loadImage("heart.png");
+  currColor = white;
 }
 
 void draw() {
   fill(255);
   stroke(0);
-  
+
   fill(darkblue);
   stroke(darkblue);
   strokeWeight(0);
-  
+
   // SIDE BAR
   rect(0, 0, 100, 800);
   stampOnOff();
-  
-  //tactile button
-  tactile(10, 10, 80, 80);
-  //image(hrt, 0, 0, 80, 80);
+
+  //tactile buttons
   rect(10, 10, 80, 80);
+  tactile(10, 10, 70, 70);
+  image(hrt, 10, 10, 80, 80);
+
+  // colour buttons
+  tactile2();
+  fill(pink);
+  strokeWeight(0);
+  rect(10, 100, 80, 25);
+
+  fill(red);
+  rect(10, 135, 80, 25);
+
+  fill(orange);
+  rect(10, 170, 80, 25);
+
+  fill(yellow);
+  rect(10, 205, 80, 25);
+
+  fill(yellow2);
+  rect(10, 240, 80, 25);
+
+  fill(green);
+  rect(10, 275, 80, 25);
+
+  fill(blue);
+  rect(10, 310, 80, 25);
+
+  fill(indigo);
+  rect(10, 345, 80, 25);
+
+  fill(violet);
+  rect(10, 380, 80, 25);
+
+  fill(purple);
+  rect(10, 415, 80, 25);
+
+  fill(white);
+  rect(10, 450, 80, 25);
 }
 
 void mouseDragged() {
   if (!on) {
-    
+
     //squiggly line
     strokeWeight(3);
-    stroke(0);
+    stroke(currColor);
     line(pmouseX, pmouseY, mouseX, mouseY);
   } else {
-    // heart
+
     image(hrt, mouseX, mouseY, 80, 80);
   }
 }
 
 void mouseReleased() {
 
-  if (mouseX > 0 && mouseX < 800 && mouseY > 0 && mouseY < 800) {
+  if (mouseX > 10 && mouseX < 90 && mouseY > 10 && mouseY < 90) {
     on = !on;
   }
 
-  if (on && ! (mouseX < 200 && mouseY < 100)) {
+  if (on && ! (mouseX < 100 && mouseY < 100)) {
     // heart
     image(hrt, mouseX, mouseY, 80, 80);
   }
+
+  if (mouseX > 10 && mouseX < 90) {
+    if ( mouseY > 100 && mouseY < 125) {
+      currColor = pink;
+    } else if (mouseY > 135 && mouseY < 160) {
+      currColor = red;
+    } else if (mouseY > 170 && mouseY < 195) {
+      currColor = orange;
+    } else if (mouseY > 205 && mouseY < 230) {
+      currColor = yellow;
+    }else if (mouseY > 240 && mouseY < 265) {
+      currColor = yellow2;
+    }else if (mouseY > 275 && mouseY < 300) {
+      currColor = green;
+    }else if (mouseY > 310 && mouseY < 335) {
+      currColor = blue;
+    } else if (mouseY > 345 && mouseY < 370) {
+      currColor = indigo;
+    }else if (mouseY > 380 && mouseY < 405) {
+      currColor = violet;
+    }else if (mouseY > 415 && mouseY < 440) {
+      currColor = purple;
+    }else if (mouseY > 450 && mouseY < 475) {
+      currColor = white;
+    }
+  }
 }
 
-void tactile(int x1, int y1, int x2, int y2) {
-  rect(x1, y1, x2, y2);
-  
- if (mouseX > x1 && mouseX < x2 && mouseY > y1 && mouseY < y2) {
+void tactile(int x, int y, int w, int h) {
+
+  if (mouseX > x && mouseX < x + w && mouseY > y && mouseY < y + h) {
     fill(yellow, 100); 
-  } else {
-    fill(255, 255, 255, 0);
+    rect(x, y, x+w, y+h);
+  }
+}
+
+void tactile2() {
+  if (mouseX > 10 && mouseX < 90) {
+    if (mouseY > 100 && mouseY < 125) {
+      stroke(pink);
+      rect(10, 100, 80, 25);
+    } else if (mouseY > 135 && mouseY < 160) {
+      stroke(red);
+      rect(10, 135, 80, 25);
+    } else if (mouseY > 170 && mouseY < 195) {
+      stroke(orange);
+      rect(10, 170, 80, 25);
+    } else if (mouseY > 205 && mouseY < 230) {
+      stroke(yellow);
+      rect(10, 205, 80, 25);
+    } else if (mouseY > 240 && mouseY < 265) {
+      stroke(yellow2);
+      rect(10, 240, 80, 25);
+    } else if (mouseY > 275 && mouseY < 300) {
+      stroke(green);
+      rect(10, 275, 80, 25);
+    } else if (mouseY > 310 && mouseY < 335) {
+      stroke(blue);
+      rect(10, 310, 80, 25);
+    }else if (mouseY > 345 && mouseY < 360) {
+      stroke(indigo);
+      rect(10, 345, 80, 25);
+    } else if (mouseY > 380 && mouseY < 405) {
+      stroke(violet);
+      rect(10, 380, 80, 25);
+    } else if (mouseY > 415 && mouseY < 440) {
+      stroke(purple);
+      rect(10, 415, 80, 25);
+    } else if (mouseY > 450 && mouseY < 475) {
+      stroke(white);
+      rect(10, 450, 80, 25);
+    }
   }
 }
 
