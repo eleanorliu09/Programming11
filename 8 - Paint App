@@ -201,9 +201,21 @@ void mouseDragged() {
 
 void mouseReleased() {
 
-  if (mouseX > 10 && mouseX < 90 && mouseY > 485 && mouseY <515){
-  background(white);
+  //NEW
+  if (mouseX > 10 && mouseX < 90 && mouseY > 485 && mouseY <515) {
+    background(white);
   }
+
+  //LOAD
+  if (mouseX > 10 && mouseX < 90 && mouseY > 525 && mouseY < 555) {
+    selectInput("Pick an image to load", "openImage");
+  }
+  if (mouseX > 10 && mouseX < 90 && mouseY > 565 && mouseY < 595) {
+    selectOutput("Choose a name for your new image file", "saveImage");
+  }
+
+
+
   if (mouseX > 110 && mouseY > 5 && mouseX < 300 && mouseY < 35) {
     getT();
   }
@@ -244,6 +256,13 @@ void mouseReleased() {
   }
 }
 
+void saveImage(File f) {
+  if (f != null) {
+    PImage canvas = get (100, 40, width-100, height-40);
+    canvas.save(f.getAbsolutePath());
+  }
+}
+
 void getT() {
   currC = mouseX;
   currT = (int) map(currC, 110, 300, 0, 40);
@@ -256,5 +275,16 @@ void stampOnOff() {
   } else {
     strokeWeight(5);
     stroke(prussianBlue);
+  }
+}
+
+void openImage(File f) {
+  if (f != null) {
+    int n = 0;
+    while (n < 10) {
+      PImage pic = loadImage(f.getPath());
+      image(pic, 0, 0);
+      n ++ ;
+    }
   }
 }
