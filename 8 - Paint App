@@ -10,6 +10,7 @@ color cyan = #68C3D4;
 color currColor;
 int currC;
 int currT;
+int currH;
 
 //PEN COLOURS
 color pink = #E56B6F;
@@ -31,6 +32,7 @@ void setup() {
   currColor = white;
   currC = 150;
   currT = 4;
+  currH = 20;
 }
 
 void draw() {
@@ -191,7 +193,7 @@ void mouseDragged() {
       stroke(currColor);
       line(pmouseX, pmouseY, mouseX, mouseY);
     } else {
-      image(hrt, mouseX, mouseY, 80, 80);
+      image(hrt, mouseX, mouseY, currH, currH);
     }
   }
   if (mouseX > 110 && mouseY > 5 && mouseX < 300 && mouseY < 35) {
@@ -200,7 +202,6 @@ void mouseDragged() {
 }
 
 void mouseReleased() {
-
   //NEW
   if (mouseX > 10 && mouseX < 90 && mouseY > 485 && mouseY <515) {
     background(white);
@@ -214,8 +215,6 @@ void mouseReleased() {
     selectOutput("Choose a name for your new image file", "saveImage");
   }
 
-
-
   if (mouseX > 110 && mouseY > 5 && mouseX < 300 && mouseY < 35) {
     getT();
   }
@@ -225,8 +224,7 @@ void mouseReleased() {
   }
 
   if (on && mouseX > 100 ) {
-    // heart
-    image(hrt, mouseX, mouseY, 80, 80);
+    image(hrt, mouseX, mouseY, currH, currH);
   }
 
   if (mouseX > 10 && mouseX < 90) {
@@ -266,6 +264,7 @@ void saveImage(File f) {
 void getT() {
   currC = mouseX;
   currT = (int) map(currC, 110, 300, 0, 40);
+  currH = (int) map(currC, 110, 300, 0, 80);
 }
 
 void stampOnOff() {
