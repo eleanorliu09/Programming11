@@ -22,7 +22,7 @@ color blue = #00B4D8;
 color indigo = #134074;
 color violet = #893168;
 color purple = #9E768F;
-color white = #F2FDFF;
+color white = #FFFFFF;
 
 void setup() {
   background(255);
@@ -101,9 +101,83 @@ void draw() {
   rect(10, 450, 80, 25);
 
   fill(cyan);
+  strokeWeight(0);
   rect(10, 485, 80, 30);
+  tactile3(10, 485, 80, 30);
+  
+  fill(cyan);
+  strokeWeight(0);
   rect(10, 525, 80, 30);
+  tactile3(10, 525, 80, 30);
+  
+  fill(cyan);
+  strokeWeight(0);
   rect(10, 565, 80, 30);
+  tactile3(10, 565, 80, 30);
+  
+  // NEW, LOAD, SAVE BUTTONS
+  textAlign(CENTER, CENTER);
+  fill(0);
+  text("NEW", 50, 500);
+  text("LOAD", 50, 540);
+  text("SAVE", 50, 580);
+  
+}
+
+void tactile3(int x, int y, int w, int h) {
+ if(mouseX > x && mouseX < x+w && mouseY > y && mouseY < y+h  ){
+   stroke(cyan);
+   fill(cyan, 100);
+   strokeWeight(5);
+   rect(x, y, w, h);
+ }
+}
+
+void tactile2() {
+  if (mouseX > 10 && mouseX < 90) {
+    if (mouseY > 100 && mouseY < 125) {
+      stroke(pink);
+      rect(10, 100, 80, 25);
+    } else if (mouseY > 135 && mouseY < 160) {
+      stroke(red);
+      rect(10, 135, 80, 25);
+    } else if (mouseY > 170 && mouseY < 195) {
+      stroke(orange);
+      rect(10, 170, 80, 25);
+    } else if (mouseY > 205 && mouseY < 230) {
+      stroke(yellow);
+      rect(10, 205, 80, 25);
+    } else if (mouseY > 240 && mouseY < 265) {
+      stroke(yellow2);
+      rect(10, 240, 80, 25);
+    } else if (mouseY > 275 && mouseY < 300) {
+      stroke(green);
+      rect(10, 275, 80, 25);
+    } else if (mouseY > 310 && mouseY < 335) {
+      stroke(blue);
+      rect(10, 310, 80, 25);
+    } else if (mouseY > 345 && mouseY < 360) {
+      stroke(indigo);
+      rect(10, 345, 80, 25);
+    } else if (mouseY > 380 && mouseY < 405) {
+      stroke(violet);
+      rect(10, 380, 80, 25);
+    } else if (mouseY > 415 && mouseY < 440) {
+      stroke(purple);
+      rect(10, 415, 80, 25);
+    } else if (mouseY > 450 && mouseY < 475) {
+      stroke(white);
+      rect(10, 450, 80, 25);
+    }
+  }
+}
+
+void tactile(int x, int y, int w, int h) {
+
+  if (mouseX > x && mouseX < x + w && mouseY > y && mouseY < y + h) {
+    fill(yellow, 100); 
+    rect(x, y, x+w, y+h);
+  }
 }
 
 void mouseDragged() {
@@ -164,55 +238,9 @@ void mouseReleased() {
   }
 }
 
-void tactile(int x, int y, int w, int h) {
-
-  if (mouseX > x && mouseX < x + w && mouseY > y && mouseY < y + h) {
-    fill(yellow, 100); 
-    rect(x, y, x+w, y+h);
-  }
-}
-
 void getT() {
   currC = mouseX;
   currT = (int) map(currC, 110, 300, 0, 40);
-}
-void tactile2() {
-  if (mouseX > 10 && mouseX < 90) {
-    if (mouseY > 100 && mouseY < 125) {
-      stroke(pink);
-      rect(10, 100, 80, 25);
-    } else if (mouseY > 135 && mouseY < 160) {
-      stroke(red);
-      rect(10, 135, 80, 25);
-    } else if (mouseY > 170 && mouseY < 195) {
-      stroke(orange);
-      rect(10, 170, 80, 25);
-    } else if (mouseY > 205 && mouseY < 230) {
-      stroke(yellow);
-      rect(10, 205, 80, 25);
-    } else if (mouseY > 240 && mouseY < 265) {
-      stroke(yellow2);
-      rect(10, 240, 80, 25);
-    } else if (mouseY > 275 && mouseY < 300) {
-      stroke(green);
-      rect(10, 275, 80, 25);
-    } else if (mouseY > 310 && mouseY < 335) {
-      stroke(blue);
-      rect(10, 310, 80, 25);
-    } else if (mouseY > 345 && mouseY < 360) {
-      stroke(indigo);
-      rect(10, 345, 80, 25);
-    } else if (mouseY > 380 && mouseY < 405) {
-      stroke(violet);
-      rect(10, 380, 80, 25);
-    } else if (mouseY > 415 && mouseY < 440) {
-      stroke(purple);
-      rect(10, 415, 80, 25);
-    } else if (mouseY > 450 && mouseY < 475) {
-      stroke(white);
-      rect(10, 450, 80, 25);
-    }
-  }
 }
 
 void stampOnOff() {
