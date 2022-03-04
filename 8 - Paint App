@@ -1,11 +1,17 @@
 PImage hrt;
 boolean on;
+
+//THEME COLOURS
 color darkblue = #007EA7;
 color prussianBlue = #22007C;
-color currColor;
 color cyan = #68C3D4;
 
-//Colour Pallette Coloors
+//CURRENT VARIABLES
+color currColor;
+int currC;
+int currT;
+
+//PEN COLOURS
 color pink = #E56B6F;
 color red = #FF3333;
 color orange = #F58A07;
@@ -23,6 +29,8 @@ void setup() {
   size(800, 600);
   hrt = loadImage("heart.png");
   currColor = white;
+  currC = 150;
+  currT = 4;
 }
 
 void draw() {
@@ -37,13 +45,16 @@ void draw() {
   rect(0, 0, 100, 800);
   rect(0, 0, 800, 40);
 
-  // SLIDE BAR TO CONTROL SIZE
+  // SLIDE BAR TO CONTROL PEN THICKNESS
   fill(cyan);
   stroke(cyan);
   strokeWeight(5);
   rect(105, 10, 200, 20);
   stroke(prussianBlue);
+
+  // SLIDER CIRCLE
   line(110, 20, 300, 20);
+  circle(currC, 20, currT);
 
   // ACTIVATING HEART STAMP
   stroke(darkblue);
@@ -96,25 +107,32 @@ void draw() {
 }
 
 void mouseDragged() {
-  if (!on) {
-
-    //squiggly line
-    strokeWeight(3);
-    stroke(currColor);
-    line(pmouseX, pmouseY, mouseX, mouseY);
-  } else {
-
-    image(hrt, mouseX, mouseY, 80, 80);
+  if (mouseX > 100 && mouseY > 40) {
+    if (!on) {
+      //squiggly line
+      strokeWeight(currT);
+      stroke(currColor);
+      line(pmouseX, pmouseY, mouseX, mouseY);
+    } else {
+      image(hrt, mouseX, mouseY, 80, 80);
+    }
+  }
+  if (mouseX > 110 && mouseY > 5 && mouseX < 300 && mouseY < 35) {
+    getT();
   }
 }
 
 void mouseReleased() {
 
+  if (mouseX > 110 && mouseY > 5 && mouseX < 300 && mouseY < 35) {
+    getT();
+  }
+
   if (mouseX > 10 && mouseX < 90 && mouseY > 10 && mouseY < 90) {
     on = !on;
   }
 
-  if (on && ! (mouseX < 100 && mouseY < 100)) {
+  if (on && mouseX > 100 ) {
     // heart
     image(hrt, mouseX, mouseY, 80, 80);
   }
@@ -154,6 +172,10 @@ void tactile(int x, int y, int w, int h) {
   }
 }
 
+void getT() {
+  currC = mouseX;
+  currT = (int) map(currC, 110, 300, 0, 40);
+}
 void tactile2() {
   if (mouseX > 10 && mouseX < 90) {
     if (mouseY > 100 && mouseY < 125) {
