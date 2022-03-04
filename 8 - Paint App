@@ -100,37 +100,40 @@ void draw() {
   fill(white);
   rect(10, 450, 80, 25);
 
+  // NEW, LOAD, SAVE BUTTONS
+
+  //NEW
   fill(cyan);
   strokeWeight(0);
   rect(10, 485, 80, 30);
   tactile3(10, 485, 80, 30);
-  
+
+  //LOAD
   fill(cyan);
   strokeWeight(0);
   rect(10, 525, 80, 30);
   tactile3(10, 525, 80, 30);
-  
+
+  //SAVE
   fill(cyan);
   strokeWeight(0);
   rect(10, 565, 80, 30);
   tactile3(10, 565, 80, 30);
-  
-  // NEW, LOAD, SAVE BUTTONS
+
   textAlign(CENTER, CENTER);
   fill(0);
   text("NEW", 50, 500);
   text("LOAD", 50, 540);
   text("SAVE", 50, 580);
-  
 }
 
 void tactile3(int x, int y, int w, int h) {
- if(mouseX > x && mouseX < x+w && mouseY > y && mouseY < y+h  ){
-   stroke(cyan);
-   fill(cyan, 100);
-   strokeWeight(5);
-   rect(x, y, w, h);
- }
+  if (mouseX > x && mouseX < x+w && mouseY > y && mouseY < y+h  ) {
+    stroke(cyan);
+    fill(cyan, 100);
+    strokeWeight(5);
+    rect(x, y, w, h);
+  }
 }
 
 void tactile2() {
@@ -198,6 +201,9 @@ void mouseDragged() {
 
 void mouseReleased() {
 
+  if (mouseX > 10 && mouseX < 90 && mouseY > 485 && mouseY <515){
+  background(white);
+  }
   if (mouseX > 110 && mouseY > 5 && mouseX < 300 && mouseY < 35) {
     getT();
   }
