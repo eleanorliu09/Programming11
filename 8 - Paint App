@@ -1,4 +1,4 @@
-PImage hrt, cPl, gStr, cStp;
+PImage hrt, cPl, gStr, cStp, yflr, tulip;
 boolean on;
 
 //STAMP
@@ -40,6 +40,10 @@ void setup() {
   stp.add(hrt);
   gStr = loadImage("gStr.png");
   stp.add(gStr);
+  tulip = loadImage("tulip.png");
+  stp.add(tulip);
+  yflr = loadImage("yflr.png");
+  stp.add(yflr);
   cStp = stp.get(0);
   cPl = loadImage("cP.png");
   currColor = white;
