@@ -1,4 +1,4 @@
-PImage hrt, cPl;
+PImage hrt, cPl, gStr;
 boolean on;
 
 //STAMP
@@ -36,6 +36,9 @@ void setup() {
   background(255);
   size(800, 600);
   hrt = loadImage("heart.png");
+  stp.add(hrt);
+  gStr = loadImage("gStr.png");
+  stp.add(gStr);
   cPl = loadImage("cP.png");
   currColor = white;
   currC = 150;
@@ -72,12 +75,15 @@ void draw() {
   stroke(cyan);
   circle(340, 22, 25);
   circle(380, 22, 25);
+  circle(420, 22, 25);
   fill(0);
   textAlign(CENTER, CENTER);
   text("1", 340, 20);
   text("2", 381, 20);
+  text("3", 420, 20);
   tactile4(340, 22, 25);
   tactile4(380, 22, 25);
+  tactile4(420, 22, 25);
 
   // ACTIVATING HEART STAMP
   fill(white);
@@ -85,7 +91,7 @@ void draw() {
   strokeWeight(5);
   stampOnOff();
   rect(10, 10, 80, 80);
-  tactile(10, 10, 70, 70);
+  tactile();
   image(hrt, 10, 10, 80, 80);
 
   if (!on) {
@@ -236,11 +242,11 @@ void tactile2() {
   }
 }
 
-void tactile(int x, int y, int w, int h) {
+void tactile() {
 
-  if (mouseX > x && mouseX < x + w && mouseY > y && mouseY < y + h) {
+  if ( dist(mouseX, mouseY, 420, 22) <= 25) {
     fill(yellow, 100); 
-    rect(x, y, x+w, y+h);
+    rect(10, 10, 80, 80);
   }
 }
 
@@ -289,7 +295,7 @@ void mouseReleased() {
     getT();
   }
 
-  if (mouseX > 10 && mouseX < 90 && mouseY > 10 && mouseY < 90) {
+  if ( dist(mouseX, mouseY, 420, 22) <= 25) {
     on = !on;
   }
 
