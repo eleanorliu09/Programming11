@@ -1,4 +1,4 @@
-PImage hrt;
+PImage hrt, cPl;
 boolean on;
 
 //THEME COLOURS
@@ -8,9 +8,11 @@ color cyan = #68C3D4;
 
 //CURRENT VARIABLES
 color currColor;
+color pC;
 int currC;
 int currT;
 int currH;
+int cP;
 
 //PEN COLOURS
 color pink = #E56B6F;
@@ -26,9 +28,11 @@ color purple = #9E768F;
 color white = #FFFFFF;
 
 void setup() {
+  cP = 0;
   background(255);
   size(800, 600);
   hrt = loadImage("heart.png");
+  cPl = loadImage("cP.png");
   currColor = white;
   currC = 150;
   currT = 4;
@@ -59,6 +63,18 @@ void draw() {
   fill(currColor);
   circle(currC, 20, currT);
 
+  // PICKING PALLETES
+  fill(cyan);
+  stroke(cyan);
+  circle(340, 22, 25);
+  circle(380, 22, 25);
+  fill(0);
+  textAlign(CENTER, CENTER);
+  text("1", 340, 20);
+  text("2", 381, 20);
+  tactile4(340, 22, 25);
+  tactile4(380, 22, 25);
+
   // ACTIVATING HEART STAMP
   fill(white);
   stroke(darkblue);
@@ -68,41 +84,48 @@ void draw() {
   tactile(10, 10, 70, 70);
   image(hrt, 10, 10, 80, 80);
 
-  // CHANGE COLOUR OF PEN
-  tactile2();
-  fill(pink);
-  strokeWeight(0);
-  rect(10, 100, 80, 25);
+cCl();
+  if (cP == 0) {
+    
+    // CHANGE COLOUR OF PEN
+    tactile2();
+    fill(pink);
+    strokeWeight(0);
+    rect(10, 100, 80, 25);
 
-  fill(red);
-  rect(10, 135, 80, 25);
+    fill(red);
+    rect(10, 135, 80, 25);
 
-  fill(orange);
-  rect(10, 170, 80, 25);
+    fill(orange);
+    rect(10, 170, 80, 25);
 
-  fill(yellow);
-  rect(10, 205, 80, 25);
+    fill(yellow);
+    rect(10, 205, 80, 25);
 
-  fill(yellow2);
-  rect(10, 240, 80, 25);
+    fill(yellow2);
+    rect(10, 240, 80, 25);
 
-  fill(green);
-  rect(10, 275, 80, 25);
+    fill(green);
+    rect(10, 275, 80, 25);
 
-  fill(blue);
-  rect(10, 310, 80, 25);
+    fill(blue);
+    rect(10, 310, 80, 25);
 
-  fill(indigo);
-  rect(10, 345, 80, 25);
+    fill(indigo);
+    rect(10, 345, 80, 25);
 
-  fill(violet);
-  rect(10, 380, 80, 25);
+    fill(violet);
+    rect(10, 380, 80, 25);
 
-  fill(purple);
-  rect(10, 415, 80, 25);
+    fill(purple);
+    rect(10, 415, 80, 25);
 
-  fill(white);
-  rect(10, 450, 80, 25);
+    fill(white);
+    rect(10, 450, 80, 25);
+  } else if (cP == 1) {
+    image(cPl, 10, 100, 80, 375);
+    cPk();
+  }
 
   // NEW, LOAD, SAVE BUTTONS
 
@@ -131,6 +154,34 @@ void draw() {
   text("SAVE", 50, 580);
 }
 
+void cCl(){
+if( !on) {
+   strokeWeight(0);
+  stroke(currColor);
+  fill(currColor);
+ rect(30, 30, 40, 40);
+}
+}
+
+void cPk(){
+
+ if (mouseX > 10 && mouseX < 90 && mouseY > 100 && mouseY < 475) {
+ pC = get(mouseX, mouseY);
+    strokeWeight(0);
+  stroke(pC);
+  fill(pC);
+ rect(30, 30, 40, 40);
+ }
+}
+
+void tactile4(int x, int y, int r) {
+  if (dist(x, y, mouseX, mouseY) <= r) {
+    fill(cyan, 100);
+    stroke(cyan);
+    circle(x, y, r+3);
+
+  }
+}
 void tactile3(int x, int y, int w, int h) {
   if (mouseX > x && mouseX < x+w && mouseY > y && mouseY < y+h  ) {
     stroke(cyan);
@@ -141,7 +192,7 @@ void tactile3(int x, int y, int w, int h) {
 }
 
 void tactile2() {
-  if (mouseX > 10 && mouseX < 90) {
+  if (mouseX > 10 && mouseX < 90 && cP == 0) {
     if (mouseY > 100 && mouseY < 125) {
       stroke(pink);
       rect(10, 100, 80, 25);
@@ -204,6 +255,17 @@ void mouseDragged() {
 }
 
 void mouseReleased() {
+  
+  //PALLETTES
+  if(dist(340, 22, mouseX, mouseY) <= 25){
+  cP = 0;
+  } else if(dist(380, 22, mouseX, mouseY) <= 25){
+  cP = 1;
+  }
+  
+   if (mouseX > 10 && mouseX < 90 && mouseY > 100 && mouseY < 475){
+   currColor = pC;
+   }
   //NEW
   if (mouseX > 10 && mouseX < 90 && mouseY > 485 && mouseY <515) {
     background(white);
@@ -229,7 +291,7 @@ void mouseReleased() {
     image(hrt, mouseX, mouseY, currH, currH);
   }
 
-  if (mouseX > 10 && mouseX < 90) {
+  if (mouseX > 10 && mouseX < 90 && cP == 0) {
     if ( mouseY > 100 && mouseY < 125) {
       currColor = pink;
     } else if (mouseY > 135 && mouseY < 160) {
