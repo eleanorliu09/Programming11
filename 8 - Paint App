@@ -56,9 +56,11 @@ void draw() {
 
   // SLIDER CIRCLE
   line(110, 20, 300, 20);
+  fill(currColor);
   circle(currC, 20, currT);
 
   // ACTIVATING HEART STAMP
+  fill(white);
   stroke(darkblue);
   strokeWeight(5);
   stampOnOff();
