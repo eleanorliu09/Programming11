@@ -1,4 +1,4 @@
-PImage hrt, cPl, gStr;
+PImage hrt, cPl, gStr, cStp;
 boolean on;
 
 //STAMP
@@ -33,12 +33,14 @@ color white = #FFFFFF;
 
 void setup() {
   cP = 0;
+  cS = 0;
   background(255);
   size(800, 600);
   hrt = loadImage("heart.png");
   stp.add(hrt);
   gStr = loadImage("gStr.png");
   stp.add(gStr);
+  cStp = stp.get(0);
   cPl = loadImage("cP.png");
   currColor = white;
   currC = 150;
@@ -92,7 +94,7 @@ void draw() {
   stampOnOff();
   rect(10, 10, 80, 80);
   tactile();
-  image(hrt, 10, 10, 80, 80);
+  image(cStp, 10, 10, 80, 80);
 
   if (!on) {
     cCl();
@@ -172,7 +174,7 @@ void cCl() {
     strokeWeight(0);
     stroke(currColor);
     fill(currColor);
-    rect(30, 30, 40, 40);
+    rect(12, 12, 78, 78);
   }
 }
 
@@ -183,7 +185,7 @@ void cPk() {
     strokeWeight(0);
     stroke(pC);
     fill(pC);
-    rect(30, 30, 40, 40);
+    rect(12, 12, 78, 78);
   }
 }
 
@@ -258,7 +260,7 @@ void mouseDragged() {
       stroke(currColor);
       line(pmouseX, pmouseY, mouseX, mouseY);
     } else {
-      image(hrt, mouseX, mouseY, currH, currH);
+      image(cStp, mouseX, mouseY, currH, currH);
     }
   }
   if (mouseX > 110 && mouseY > 5 && mouseX < 300 && mouseY < 35) {
@@ -300,7 +302,7 @@ void mouseReleased() {
   }
 
   if (on && mouseX > 100 && mouseY > 40) {
-    image(hrt, mouseX, mouseY, currH, currH);
+    image(cStp, mouseX, mouseY, currH, currH);
   }
 
   if (mouseX > 10 && mouseX < 90 && cP == 0) {
