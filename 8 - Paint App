@@ -269,6 +269,14 @@ void mouseDragged() {
 }
 
 void mouseReleased() {
+  
+  if (mouseX > 10 && mouseY > 10 && mouseX < 90 && mouseY < 90) {
+  cS++;
+  if (cS >= stp.size()){
+  cS = 0;
+  }
+  cStp = stp.get(cS);
+  }
 
   //PALLETTES
   if (dist(340, 22, mouseX, mouseY) <= 25) {
