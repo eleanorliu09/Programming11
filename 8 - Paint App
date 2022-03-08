@@ -223,7 +223,7 @@ void mouseReleased() {
     on = !on;
   }
 
-  if (on && mouseX > 100 ) {
+  if (on && mouseX > 100 && mouseY > 40) {
     image(hrt, mouseX, mouseY, currH, currH);
   }
 
