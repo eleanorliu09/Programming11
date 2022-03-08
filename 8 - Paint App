@@ -1,6 +1,10 @@
 PImage hrt, cPl;
 boolean on;
 
+//STAMP
+int cS;
+ArrayList<PImage> stp = new ArrayList<PImage>();
+
 //THEME COLOURS
 color darkblue = #007EA7;
 color prussianBlue = #22007C;
@@ -84,9 +88,12 @@ void draw() {
   tactile(10, 10, 70, 70);
   image(hrt, 10, 10, 80, 80);
 
-cCl();
+  if (!on) {
+    cCl();
+  }
+
   if (cP == 0) {
-    
+
     // CHANGE COLOUR OF PEN
     tactile2();
     fill(pink);
@@ -154,24 +161,24 @@ cCl();
   text("SAVE", 50, 580);
 }
 
-void cCl(){
-if( !on) {
-   strokeWeight(0);
-  stroke(currColor);
-  fill(currColor);
- rect(30, 30, 40, 40);
-}
-}
-
-void cPk(){
-
- if (mouseX > 10 && mouseX < 90 && mouseY > 100 && mouseY < 475) {
- pC = get(mouseX, mouseY);
+void cCl() {
+  if (!on) {
     strokeWeight(0);
-  stroke(pC);
-  fill(pC);
- rect(30, 30, 40, 40);
- }
+    stroke(currColor);
+    fill(currColor);
+    rect(30, 30, 40, 40);
+  }
+}
+
+void cPk() {
+
+  if (mouseX > 10 && mouseX < 90 && mouseY > 100 && mouseY < 475 && !on) {
+    pC = get(mouseX, mouseY);
+    strokeWeight(0);
+    stroke(pC);
+    fill(pC);
+    rect(30, 30, 40, 40);
+  }
 }
 
 void tactile4(int x, int y, int r) {
@@ -179,7 +186,6 @@ void tactile4(int x, int y, int r) {
     fill(cyan, 100);
     stroke(cyan);
     circle(x, y, r+3);
-
   }
 }
 void tactile3(int x, int y, int w, int h) {
@@ -255,17 +261,17 @@ void mouseDragged() {
 }
 
 void mouseReleased() {
-  
+
   //PALLETTES
-  if(dist(340, 22, mouseX, mouseY) <= 25){
-  cP = 0;
-  } else if(dist(380, 22, mouseX, mouseY) <= 25){
-  cP = 1;
+  if (dist(340, 22, mouseX, mouseY) <= 25) {
+    cP = 0;
+  } else if (dist(380, 22, mouseX, mouseY) <= 25) {
+    cP = 1;
   }
-  
-   if (mouseX > 10 && mouseX < 90 && mouseY > 100 && mouseY < 475){
-   currColor = pC;
-   }
+
+  if (mouseX > 10 && mouseX < 90 && mouseY > 100 && mouseY < 475) {
+    currColor = pC;
+  }
   //NEW
   if (mouseX > 10 && mouseX < 90 && mouseY > 485 && mouseY <515) {
     background(white);
