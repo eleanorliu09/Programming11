@@ -1,4 +1,6 @@
-PImage hrt, colorPallettel, growingStar, currStamp, blossom, tulip;
+PImage heart, growingStar, blossom, tulip, mapleleaf, sunflower, hibiscus, herb, fourleafclover, bouquet;
+PImage currStamp;
+PImage colorPallettel;
 boolean on;
 
 //STAMP
@@ -37,20 +39,37 @@ void setup() {
   currStampIndex = 0;
   background(255);
   size(800, 600);
-  hrt = loadImage("heart.png");
-  stampArrayList.add(hrt);
-  growingStar = loadImage("growingStar.png");
-  stampArrayList.add(growingStar);
-  tulip = loadImage("tulip.png");
-  stampArrayList.add(tulip);
-  blossom = loadImage("blossom.png");
-  stampArrayList.add(blossom);
-  currStamp = stampArrayList.get(0);
-  colorPallettel = loadImage("colorPallette.png");
   currColor = white;
   currCircleX= 150;
   currThickness = 4;
   currH = 20;
+ colorPallettel = loadImage("colorPallette.png");
+ 
+  // LOAD STAMPS
+  heart = loadImage("heart.png");
+  growingStar = loadImage("growingStar.png");
+  tulip = loadImage("tulip.png");
+  blossom = loadImage("blossom.png");
+  mapleleaf = loadImage("mapleleaf.png");
+  sunflower = loadImage("sunflower.png");
+  hibiscus = loadImage("hibiscus.png");
+  fourleafclover = loadImage("fourleafclover.png");
+  bouquet = loadImage("bouquet.png");
+  herb = loadImage("herb.png");
+  
+  stampArrayList.add(heart);
+  stampArrayList.add(growingStar);
+  stampArrayList.add(tulip);
+  stampArrayList.add(blossom);
+  stampArrayList.add(mapleleaf);
+  stampArrayList.add(sunflower);
+  stampArrayList.add(hibiscus);
+  stampArrayList.add(fourleafclover);
+  stampArrayList.add(bouquet);
+  stampArrayList.add(herb);
+  
+  currStamp = stampArrayList.get(0);
+  
 }
 
 void draw() {
