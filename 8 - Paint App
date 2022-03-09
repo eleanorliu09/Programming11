@@ -1,8 +1,10 @@
-PImage hrt, cPl, gStr, cStp, yflr, tulip;
+PImage hrt, gStr, yflr, tulip; //heart, glowing star, yellow flower, tulip
+PImage cStp; // current Stamp, as in the stamp that is selected now
+PImage cPl; // colour palette, as in the selection palette
 boolean on;
 
 //STAMP
-int cS;
+int cS; // current stamp, as in the stamp in the order of the Array List 
 ArrayList<PImage> stp = new ArrayList<PImage>();
 
 //THEME COLOURS
@@ -12,7 +14,7 @@ color cyan = #68C3D4;
 
 //CURRENT VARIABLES
 color currColor;
-color pC;
+color pC; // pallette colour, as in when you are hovering over the pallette
 int currC;
 int currT;
 int currH;
