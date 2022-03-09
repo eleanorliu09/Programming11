@@ -1,5 +1,5 @@
 PImage heart, growingStar, blossom, tulip, mapleleaf, sunflower, hibiscus, herb, fourleafclover, bouquet;
-PImage currStamp;
+PImage currentStamp;
 PImage colorPallettel;
 boolean on;
 
@@ -68,7 +68,7 @@ void setup() {
   stampArrayList.add(bouquet);
   stampArrayList.add(herb);
   
-  currStamp = stampArrayList.get(0);
+  currentStamp = stampArrayList.get(0);
   
 }
 
@@ -122,7 +122,7 @@ void draw() {
   stampOnOff();
   rect(10, 10, 80, 80);
   tactile();
-  image(currStamp, 10, 10, 80, 80);
+  image(currentStamp, 10, 10, 80, 80);
 
   if (!on) {
     cCl();
@@ -243,6 +243,7 @@ void tactile3(int x, int y, int w, int h) {
 
 void tactile2() {
   if (mouseX > 10 && mouseX < 90 && colorPallette == 0) {
+    strokeWeight(5);
     if (mouseY > 100 && mouseY < 125) {
       stroke(pink);
       rect(10, 100, 80, 25);
@@ -296,7 +297,7 @@ void mouseDragged() {
       stroke(currColor);
       line(pmouseX, pmouseY, mouseX, mouseY);
     } else {
-      image(currStamp, mouseX, mouseY, currH, currH);
+      image(currentStamp, mouseX, mouseY, currH, currH);
     }
   }
   if (mouseX > 110 && mouseY > 5 && mouseX < 300 && mouseY < 35) {
@@ -311,7 +312,7 @@ void mouseReleased() {
     if (currStampIndex >= stampArrayList.size()) {
       currStampIndex = 0;
     }
-    currStamp = stampArrayList.get(currStampIndex);
+    currentStamp = stampArrayList.get(currStampIndex);
   }
 
   //PALLETTES
@@ -346,7 +347,7 @@ void mouseReleased() {
   }
 
   if (on && mouseX > 100 && mouseY > 40) {
-    image(currStamp, mouseX, mouseY, currH, currH);
+    image(currentStamp, mouseX, mouseY, currH, currH);
   }
 
   if (mouseX > 10 && mouseX < 90 && colorPallette == 0) {
