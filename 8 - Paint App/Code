@@ -1,8 +1,8 @@
-PImage hrt, cPl, gStr, cStp, yflr, tulip;
+PImage hrt, colorPallettel, growingStar, currStamp, blossom, tulip;
 boolean on;
 
 //STAMP
-int cS;
+int currStampIndex;
 ArrayList<PImage> stp = new ArrayList<PImage>();
 
 //THEME COLOURS
@@ -17,7 +17,7 @@ color pC;
 int currC;
 int currT;
 int currH;
-int cP;
+int colorPallette;
 
 //PEN COLOURS
 color pink = #E56B6F;
@@ -33,20 +33,20 @@ color purple = #9E768F;
 color white = #FFFFFF;
 
 void setup() {
-  cP = 0;
-  cS = 0;
+  colorPallette = 0;
+  currStampIndex = 0;
   background(255);
   size(800, 600);
   hrt = loadImage("heart.png");
   stp.add(hrt);
-  gStr = loadImage("gStr.png");
-  stp.add(gStr);
+  growingStar = loadImage("growingStar.png");
+  stp.add(growingStar);
   tulip = loadImage("tulip.png");
   stp.add(tulip);
-  yflr = loadImage("yflr.png");
-  stp.add(yflr);
-  cStp = stp.get(0);
-  cPl = loadImage("cP.png");
+  blossom = loadImage("blossom.png");
+  stp.add(blossom);
+  currStamp = stp.get(0);
+  colorPallettel = loadImage("colorPallette.png");
   currColor = white;
   currC = 150;
   currT = 4;
@@ -103,13 +103,13 @@ void draw() {
   stampOnOff();
   rect(10, 10, 80, 80);
   tactile();
-  image(cStp, 10, 10, 80, 80);
+  image(currStamp, 10, 10, 80, 80);
 
   if (!on) {
     cCl();
   }
 
-  if (cP == 0) {
+  if (colorPallette == 0) {
 
     // CHANGE COLOUR OF PEN
     tactile2();
@@ -146,9 +146,9 @@ void draw() {
 
     fill(white);
     rect(10, 450, 80, 25);
-  } else if (cP == 1) {
-    image(cPl, 10, 100, 80, 375);
-    cPk();
+  } else if (colorPallette == 1) {
+    image(colorPallettel, 10, 100, 80, 375);
+    colorPallettek();
   }
 
   // NEW, LOAD, SAVE BUTTONS
@@ -187,7 +187,7 @@ void cCl() {
   }
 }
 
-void cPk() {
+void colorPallettek() {
 
   if (mouseX > 10 && mouseX < 90 && mouseY > 100 && mouseY < 475 && !on) {
     pC = get(mouseX, mouseY);
@@ -224,7 +224,7 @@ void tactile3(int x, int y, int w, int h) {
 }
 
 void tactile2() {
-  if (mouseX > 10 && mouseX < 90 && cP == 0) {
+  if (mouseX > 10 && mouseX < 90 && colorPallette == 0) {
     if (mouseY > 100 && mouseY < 125) {
       stroke(pink);
       rect(10, 100, 80, 25);
@@ -278,7 +278,7 @@ void mouseDragged() {
       stroke(currColor);
       line(pmouseX, pmouseY, mouseX, mouseY);
     } else {
-      image(cStp, mouseX, mouseY, currH, currH);
+      image(currStamp, mouseX, mouseY, currH, currH);
     }
   }
   if (mouseX > 110 && mouseY > 5 && mouseX < 300 && mouseY < 35) {
@@ -289,18 +289,18 @@ void mouseDragged() {
 void mouseReleased() {
   
   if (mouseX > 10 && mouseY > 10 && mouseX < 90 && mouseY < 90) {
-  cS++;
-  if (cS >= stp.size()){
-  cS = 0;
+  currStampIndex++;
+  if (currStampIndex >= stp.size()){
+  currStampIndex = 0;
   }
-  cStp = stp.get(cS);
+  currStamp = stp.get(currStampIndex);
   }
 
   //PALLETTES
   if (dist(340, 22, mouseX, mouseY) <= 25) {
-    cP = 0;
+    colorPallette = 0;
   } else if (dist(380, 22, mouseX, mouseY) <= 25) {
-    cP = 1;
+    colorPallette = 1;
   }
 
   if (mouseX > 10 && mouseX < 90 && mouseY > 100 && mouseY < 475) {
@@ -328,10 +328,10 @@ void mouseReleased() {
   }
 
   if (on && mouseX > 100 && mouseY > 40) {
-    image(cStp, mouseX, mouseY, currH, currH);
+    image(currStamp, mouseX, mouseY, currH, currH);
   }
 
-  if (mouseX > 10 && mouseX < 90 && cP == 0) {
+  if (mouseX > 10 && mouseX < 90 && colorPallette == 0) {
     if ( mouseY > 100 && mouseY < 125) {
       currColor = pink;
     } else if (mouseY > 135 && mouseY < 160) {
