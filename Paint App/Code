@@ -1,0 +1,2 @@
+PImage hrt, cPl, gStr, cStp, yflr, tulip;
+boolean on;
