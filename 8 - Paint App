@@ -15,10 +15,10 @@ color cyan = #68C3D4;
 //CURRENT VARIABLES
 color currColor;
 color pC; // pallette colour, as in when you are hovering over the pallette
-int currC;
-int currT;
+int currC; // current colour
+int currT; // current thickness
 int currH;
-int cP;
+int cP; // colour palette: 0 -> fixed colours; 1 -> pallette to pick from
 
 //PEN COLOURS
 color pink = #E56B6F;
