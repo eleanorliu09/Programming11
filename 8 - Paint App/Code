@@ -3,7 +3,7 @@ boolean on;
 
 //STAMP
 int currStampIndex;
-ArrayList<PImage> stp = new ArrayList<PImage>();
+ArrayList<PImage> stampArrayList = new ArrayList<PImage>();
 
 //THEME COLOURS
 color darkblue = #007EA7;
@@ -13,9 +13,9 @@ color lightcyan = #d4ebf2;
 
 //CURRENT VARIABLES
 color currColor;
-color pC;
-int currC;
-int currT;
+color palletteColor;
+int currCircleX;
+int currThickness;
 int currH;
 int colorPallette;
 
@@ -38,18 +38,18 @@ void setup() {
   background(255);
   size(800, 600);
   hrt = loadImage("heart.png");
-  stp.add(hrt);
+  stampArrayList.add(hrt);
   growingStar = loadImage("growingStar.png");
-  stp.add(growingStar);
+  stampArrayList.add(growingStar);
   tulip = loadImage("tulip.png");
-  stp.add(tulip);
+  stampArrayList.add(tulip);
   blossom = loadImage("blossom.png");
-  stp.add(blossom);
-  currStamp = stp.get(0);
+  stampArrayList.add(blossom);
+  currStamp = stampArrayList.get(0);
   colorPallettel = loadImage("colorPallette.png");
   currColor = white;
-  currC = 150;
-  currT = 4;
+  currCircleX= 150;
+  currThickness = 4;
   currH = 20;
 }
 
@@ -76,8 +76,8 @@ void draw() {
   line(110, 20, 300, 20);
   stroke(prussianBlue);
   fill(cyan);
-  circle(currC, 20, currT);
-  
+  circle(currCircleX, 20, currThickness);
+
   tactileSlider();
 
   // PICKING PALLETES
@@ -190,23 +190,22 @@ void cCl() {
 void colorPallettek() {
 
   if (mouseX > 10 && mouseX < 90 && mouseY > 100 && mouseY < 475 && !on) {
-    pC = get(mouseX, mouseY);
+    palletteColor = get(mouseX, mouseY);
     strokeWeight(0);
-    stroke(pC);
-    fill(pC);
+    stroke(palletteColor);
+    fill(palletteColor);
     rect(12, 12, 78, 78);
   }
 }
 
-void tactileSlider(){
-  
+void tactileSlider() {
   if (mouseX > 105 && mouseY > 10 && mouseX < 305 && mouseY < 30) {
-  fill(lightcyan, 50);
-  strokeWeight(0);
-  rect(100, 5, 210, 35);
+    fill(lightcyan, 50);
+    strokeWeight(0);
+    rect(100, 5, 210, 35);
   }
-
 }
+
 void tactile4(int x, int y, int r) {
   if (dist(x, y, mouseX, mouseY) <= r) {
     fill(cyan, 100);
@@ -274,7 +273,7 @@ void mouseDragged() {
   if (mouseX > 100 && mouseY > 40) {
     if (!on) {
       //squiggly line
-      strokeWeight(currT);
+      strokeWeight(currThickness);
       stroke(currColor);
       line(pmouseX, pmouseY, mouseX, mouseY);
     } else {
@@ -287,13 +286,13 @@ void mouseDragged() {
 }
 
 void mouseReleased() {
-  
+
   if (mouseX > 10 && mouseY > 10 && mouseX < 90 && mouseY < 90) {
-  currStampIndex++;
-  if (currStampIndex >= stp.size()){
-  currStampIndex = 0;
-  }
-  currStamp = stp.get(currStampIndex);
+    currStampIndex++;
+    if (currStampIndex >= stampArrayList.size()) {
+      currStampIndex = 0;
+    }
+    currStamp = stampArrayList.get(currStampIndex);
   }
 
   //PALLETTES
@@ -304,7 +303,7 @@ void mouseReleased() {
   }
 
   if (mouseX > 10 && mouseX < 90 && mouseY > 100 && mouseY < 475) {
-    currColor = pC;
+    currColor = palletteColor;
   }
   //NEW
   if (mouseX > 10 && mouseX < 90 && mouseY > 485 && mouseY <515) {
@@ -366,9 +365,9 @@ void saveImage(File f) {
 }
 
 void getT() {
-  currC = mouseX;
-  currT = (int) map(currC, 110, 300, 0, 40);
-  currH = (int) map(currC, 110, 300, 0, 80);
+  currCircleX= mouseX;
+  currThickness = (int) map(currCircleX, 110, 300, 0, 40);
+  currH = (int) map(currCircleX, 110, 300, 0, 80);
 }
 
 void stampOnOff() {
