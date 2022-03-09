@@ -15,9 +15,9 @@ color cyan = #68C3D4;
 //CURRENT VARIABLES
 color currColor;
 color pC; // pallette colour, as in when you are hovering over the pallette
-int currC; // current colour
+int currC; // current 
 int currT; // current thickness
-int currH;
+int currH; // current height of image; can be adjusted with slidebar
 int cP; // colour palette: 0 -> fixed colours; 1 -> pallette to pick from
 
 //PEN COLOURS
