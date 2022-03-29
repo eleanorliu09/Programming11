@@ -4,11 +4,39 @@ final int GAME = 1;
 final int PAUSE = 2;
 final int GAMEOVER = 3;
 
-void setup() {
+// target vars
+float x, y, d;
+float vx, vy; // target  velocity
+
+// colour palette
+color lightpink = #FDC5F5;
+color pink = #F7AEF8;
+color lavender = #B388EB;
+color cornblue = #8093F1;
+color skyblue = #AEECEF;
+color yellow = #FFC914;
+color orange = #EE8434;
+
+// intro screen animation
+int introTextFont;
+boolean textTurnBig;
+
+void setup() { //unexpected token void is almost missing brace
   size(800, 800);
+  // width, height: special variables
   mode = INTRO;
   textAlign(CENTER, CENTER);
-  
+  rectMode(CENTER);
+
+  // target initialization
+  x = width / 2;
+  y = height / 2;
+  vx = random(-5, 5);
+  vy = random(-5, 5);
+  d = 100;
+
+  //intro screen initialization
+  introTextFont = 50;
 }
 
 void draw() {
