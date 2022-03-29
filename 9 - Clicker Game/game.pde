@@ -1,6 +1,10 @@
 void game() {
   background(skyblue);
-
+  
+  stroke(cornblue);
+  fill(cornblue);
+  rect(0, 0, width, 200);
+  
   // display target
   stroke(orange);
   strokeWeight(3);
