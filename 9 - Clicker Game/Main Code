@@ -21,6 +21,10 @@ color orange = #EE8434;
 int introTextFont;
 boolean textTurnBig;
 
+// score
+int lives;
+int score;
+
 void setup() { //unexpected token void is almost missing brace
   size(800, 800);
   // width, height: special variables
@@ -37,6 +41,10 @@ void setup() { //unexpected token void is almost missing brace
 
   //intro screen initialization
   introTextFont = 50;
+  
+  // scorekeeping initialization
+  lives = 9;
+  score = 0;
 }
 
 void draw() {
