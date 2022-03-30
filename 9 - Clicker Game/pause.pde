@@ -1,5 +1,8 @@
 void pause(){
-  background(0);
+  background(lavender);
+  
+  fill(violet);
+  textSize(30);
 }
 
 void pauseClicks(){
