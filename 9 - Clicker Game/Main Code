@@ -2,7 +2,8 @@ int mode;
 final int INTRO = 0;
 final int GAME = 1;
 final int PAUSE = 2;
-final int GAMEOVER = 3;
+final int GAMEOVER = 3;  
+final int OPTIONS = 4;
 
 // target vars
 float x, y, d;
@@ -11,11 +12,20 @@ float vx, vy; // target  velocity
 // colour palette
 color lightpink = #FDC5F5;
 color pink = #F7AEF8;
-color lavender = #B388EB;
-color cornblue = #8093F1;
-color skyblue = #AEECEF;
-color yellow = #FFC914;
+color hotpink = #EC4067;
 color orange = #EE8434;
+color yellow = #FFC914;
+color green = #43B929;
+color teagreen  = #dff7b0;
+color honeydew = #E2F5E0;
+color mintgreen = #9CFC97;
+color limegreen = #61D747;
+color darkgreen = #588B55;
+color blue = #37A2A9;
+color darkblue = #0B6F83;
+color skyblue = #AEECEF;
+color lavender = #D2CFDD; 
+color violet = #653E65;
 
 // intro screen animation
 int introTextFont;
@@ -24,6 +34,7 @@ boolean textTurnBig;
 // score
 int lives;
 int score;
+int maxScore;
 
 void setup() { //unexpected token void is almost missing brace
   size(800, 800);
@@ -41,10 +52,11 @@ void setup() { //unexpected token void is almost missing brace
 
   //intro screen initialization
   introTextFont = 50;
-  
+
   // scorekeeping initialization
-  lives = 9;
+  lives = 3;
   score = 0;
+ 
 }
 
 void draw() {
@@ -56,6 +68,8 @@ void draw() {
     pause();
   } else if (mode == GAMEOVER) {
     gameover();
+  } else if (mode == OPTIONS) {
+    options();
   } else {
     println("Error: Mode = " + mode);
   }
