@@ -18,32 +18,38 @@ void intro() {
 
 
   text("Clicker Game", 400, 150);
+
   fill(yellow);
   stroke(yellow);
-  rect(400, 400, 200, 100);
+  strokeWeight(0);
+  rect(240, 400, 220, 100);
+  rect(560, 400, 220, 100);
+
   fill(orange);
   textSize(50);
-  text("START!", 400, 390);
+  text("START!", 240, 390);
+  text("OPTIONS", 560, 390);
 
-  tactileStartButton();
+  tactileIntroButton(240, 400, 220, 100);
+  tactileIntroButton(560, 400, 220, 100);
 }
 
 
 void introClicks() {
-  if (mouseX > 300 && mouseX < 500 && mouseY > 350 && mouseY < 450) {
+  if (mouseX > 130 && mouseX < 350 && mouseY > 350 && mouseY < 450) {
     mode = GAME;
+  }
+  if (mouseX > 450 && mouseX < 670 && mouseY > 350 && mouseY < 450) {
+    mode = OPTIONS;
   }
 }
 
-void tactileStartButton() {
-  if (mouseX > 300 && mouseX < 500 && mouseY > 350 && mouseY < 450) {
+void tactileIntroButton(int a, int b, int c, int d) {
+  if (mouseX > a - (c/2) && mouseX < a + (c/2) && mouseY > b - (d/2) && mouseY < b + (d/2)) {
 
     stroke(orange);
     strokeWeight(6);
-    fill(yellow);
-    rect(400, 400, 200, 100);
-    fill(orange);
-    textSize(50);
-    text("START!", 400, 390);
+    fill(yellow, 50);
+    rect(a, b, c, d);
   }
 }
