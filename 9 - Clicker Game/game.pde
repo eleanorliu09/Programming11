@@ -1,10 +1,21 @@
 void game() {
   background(skyblue);
-  
-  stroke(cornblue);
-  fill(cornblue);
-  rect(0, 0, width, 200);
-  
+
+  stroke(mintgreen);
+  fill(mintgreen);
+  rect(400, 0, width, 200);
+
+  fill(limegreen);
+  rect(110, 50, 200, 70);
+  rect(320, 50, 200, 70);
+  rect(505, 50, 150, 70);
+  rect(690, 50, 200, 70);
+  fill(darkgreen);
+  text("Score: " + score, 110, 50);
+  text("Lives: " + lives, 320, 50);
+  text("Pause", 505, 50);
+  text("Options", 690, 50);
+
   // display target
   stroke(orange);
   strokeWeight(3);
@@ -17,16 +28,29 @@ void game() {
 
   //bouncing
 
-  if (x > width-50 || x < 50 ) {
+  if (x > width-50 || x < 50 ) { 
     vx = vx * -1;
     vy = random(-5, 5);
   } 
-  if (y < 50 || y > height-50) {
-      vy = vy * -1;
-      vx = random(-5, 5);
+  if (y < 150 || y > height-50) {
+    vy = vy * -1;
+    vx = random(-5, 5);
   }
 }
 
 void gameClicks() {
-  mode = GAMEOVER;
+
+  if ( dist(mouseX, mouseY, x, y) < 50 && mouseY > 150) {
+    score++;
+  } else {
+    lives--;
+  }
+  if (lives == 0) {
+    mode = GAMEOVER;
+  }
+
+  //  rect(505, 50, 150, 70);
+  if (mouseX > 430 && mouseX < 580 && mouseY > 15 && mouseY < 85) {
+    mode = PAUSE;
+  }
 }
