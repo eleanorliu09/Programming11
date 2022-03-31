@@ -20,7 +20,6 @@ void optionsTactile() {
   }
 }
 
-
 void optionsClicks() {
   if (mouseX > 625 && mouseX < 775 && mouseY > 675 && mouseY < 725){
     mode = GAME;
