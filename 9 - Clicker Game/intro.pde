@@ -1,4 +1,6 @@
 void intro() {
+  theme.play();
+  
   background(skyblue);
 
   fill(orange);
