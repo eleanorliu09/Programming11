@@ -30,20 +30,25 @@ void game() {
 
   if (x > width-50 || x < 50 ) { 
     vx = vx * -1;
-    vy = random(-5, 5);
+    vy = random(-5, 5) * speedInc;
   } 
   if (y < 150 || y > height-50) {
     vy = vy * -1;
-    vx = random(-5, 5);
+    vx = random(-5, 5) * speedInc;
   }
 }
 
 void gameClicks() {
 
-  if ( dist(mouseX, mouseY, x, y) < 50 && mouseY > 150) {
+  if ( dist(mouseX, mouseY, x, y) < 50) {
     score++;
-  } else {
+    gain.rewind();
+    gain.play();
+  } else if (mouseY > 100) {
     lives--;
+    speedInc ++;
+    loss.rewind();
+    loss.play();
   }
   if (lives == 0) {
     mode = GAMEOVER;
