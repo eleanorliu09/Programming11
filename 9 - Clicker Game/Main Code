@@ -1,3 +1,12 @@
+import ddf.minim.*;
+import ddf.minim.analysis.*;
+import ddf.minim.effects.*;
+import ddf.minim.signals.*;
+import ddf.minim.spi.*;
+import ddf.minim.ugens.*;
+Minim minim;
+AudioPlayer theme, gain, loss, gameover;
+
 int mode;
 final int INTRO = 0;
 final int GAME = 1;
@@ -8,6 +17,7 @@ final int OPTIONS = 4;
 // target vars
 float x, y, d;
 float vx, vy; // target  velocity
+float speedInc;
 
 // colour palette
 color lightpink = #FDC5F5;
@@ -25,6 +35,7 @@ color blue = #37A2A9;
 color darkblue = #0B6F83;
 color skyblue = #AEECEF;
 color lavender = #D2CFDD; 
+color darklav = #A69EA9;
 color violet = #653E65;
 
 // intro screen animation
@@ -49,6 +60,7 @@ void setup() { //unexpected token void is almost missing brace
   vx = random(-5, 5);
   vy = random(-5, 5);
   d = 100;
+  speedInc = 1;
 
   //intro screen initialization
   introTextFont = 50;
@@ -56,7 +68,13 @@ void setup() { //unexpected token void is almost missing brace
   // scorekeeping initialization
   lives = 3;
   score = 0;
- 
+
+  //minim
+  minim = new Minim(this);
+  theme = minim.loadFile("theme.mp3");
+  gain = minim.loadFile("gain.mp3");
+  loss = minim.loadFile("loss.mp3");
+  gameover = minim.loadFile("gameover.mp3");
 }
 
 void draw() {
