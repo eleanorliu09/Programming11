@@ -7,6 +7,9 @@ import ddf.minim.ugens.*;
 Minim minim;
 AudioPlayer theme, gain, loss, gameover;
 
+PImage colorPalette;
+PFont myFont;
+
 int mode;
 final int INTRO = 0;
 final int GAME = 1;
@@ -23,17 +26,21 @@ float speedInc;
 color lightpink = #FDC5F5;
 color pink = #F7AEF8;
 color hotpink = #EC4067;
-color orange = #EE8434;
-color yellow = #FFC914;
+color orange = #ffd663; // #EE8434;
+color yellow = #fffed6; //#FFC914;
 color green = #43B929;
 color teagreen  = #dff7b0;
 color honeydew = #E2F5E0;
+color mint = #BDEFC9;
+color pgtea = #28A445;
 color mintgreen = #9CFC97;
 color limegreen = #61D747;
 color darkgreen = #588B55;
 color blue = #37A2A9;
-color darkblue = #0B6F83;
-color skyblue = #AEECEF;
+color blue2 = #0995ab;
+color blue3 = #9bc5cc;
+color blue4 = #16044d;
+color darkblue = #290b73;
 color lavender = #D2CFDD; 
 color darklav = #A69EA9;
 color violet = #653E65;
@@ -46,6 +53,12 @@ boolean textTurnBig;
 int lives;
 int score;
 int maxScore;
+
+// options
+int speedX;
+int sizeX;
+
+color currColor;
 
 void setup() { //unexpected token void is almost missing brace
   size(800, 800);
@@ -75,10 +88,22 @@ void setup() { //unexpected token void is almost missing brace
   gain = minim.loadFile("gain.mp3");
   loss = minim.loadFile("loss.mp3");
   gameover = minim.loadFile("gameover.mp3");
+
+  // color palette
+  colorPalette = loadImage("colorPalette.png");
+  myFont = createFont("MorningRainbow.ttf", 28);
+  textFont(myFont);
+  
+  //options
+  speedX = 100;
+  sizeX = 500;
+  
+  currColor = yellow;
 }
 
 void draw() {
-  if (mode == INTRO) {
+
+    if (mode == INTRO) {
     intro();
   } else if (mode == GAME) {
     game();
