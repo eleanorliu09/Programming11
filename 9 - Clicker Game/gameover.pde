@@ -28,23 +28,20 @@ void gameover() {
   tactileTryAgain(400, 440, 250, 100);
   tactileTryAgain(400, 560, 250, 100);
   tactileTryAgain(400, 680, 250, 100);
+  speedInc = 1;
+  lives = 3;
+  score = 0;
 }
 
 void gameoverClicks() {
-  if (mouseX > 275 && mouseX < 525 && mouseY > 270 && mouseX < 370) {
+  if (mouseX > 275 && mouseX < 525 && mouseY > 270 && mouseY < 370) {
     mode = INTRO;
-    lives = 3;
-    score = 0;
   }
-  if (mouseX > 275 && mouseX < 525 && mouseY > 390 && mouseX < 490) {
+  if (mouseX > 275 && mouseX < 525 && mouseY > 390 && mouseY < 490) {
     mode = OPTIONS;
-    lives = 3;
-    score = 0;
   }
-  if (mouseX > 275 && mouseX < 525 && mouseY > 510 && mouseX < 610) {
+  if (mouseX > 275 && mouseX < 525 && mouseY > 510 && mouseY < 610) {
     mode = INTRO;
-    lives = 3;
-    score = 0;
     maxScore = 0;
   }
   if (mouseX > 275 && mouseX < 525 && mouseY > 630 && mouseY <730) {
