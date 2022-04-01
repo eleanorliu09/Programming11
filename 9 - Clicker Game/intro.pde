@@ -1,7 +1,7 @@
 void intro() {
   theme.play();
   
-  background(skyblue);
+  background(darkblue);
 
   fill(orange);
   textSize(introTextFont);
@@ -30,6 +30,7 @@ void intro() {
   fill(orange);
   textSize(50);
   text("START!", 240, 390);
+  textSize(45);
   text("OPTIONS", 560, 390);
 
   tactileIntroButton(240, 400, 220, 100);
