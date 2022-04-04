@@ -6,7 +6,7 @@ void intro() {
   fill(orange);
   textSize(introTextFont);
 
-  if (introTextFont == 80) {
+  if (introTextFont == 100) {
     textTurnBig = false;
   } else if (introTextFont < 40) {
     textTurnBig = true;
@@ -19,7 +19,7 @@ void intro() {
   }
 
 
-  text("Clicker Game", 400, 150);
+  text("Star Catcher", 400, 175);
 
   fill(yellow);
   stroke(yellow);
