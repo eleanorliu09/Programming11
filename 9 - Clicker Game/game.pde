@@ -19,9 +19,9 @@ void game() {
   text("Options", 690, 50);
 
   // display target
-  stroke(orange);
+  stroke(0);
   strokeWeight(3);
-  fill(yellow);
+  fill(currColor);
   circle(x, y, d);
 
   // moving 
@@ -30,13 +30,26 @@ void game() {
 
   //bouncing
 
-  if (x > width-50 || x < 50 ) { 
+  if (x > width-d/2 || x < d/2 ) { 
     vx = vx * -1;
     vy = random(-5, 5) * speedInc;
   } 
-  if (y < 150 || y > height-50) {
+  if (y < 100+d/2 || y > height-d/2) {
     vy = vy * -1;
     vx = random(-5, 5) * speedInc;
+  }
+
+  if (star1On) {
+    image(star1, x, y, 0.75*d, 0.75*d);
+  }
+  if (star2On) {
+    image(star2, x, y, 0.75*d, 0.75*d);
+  }
+  if (dizzyOn) {
+    image(dizzy, x, y, 0.6*d, 0.6*d);
+  }
+  if (star2On) {
+    image(sparkles, x, y, 0.75*d, 0.75*d);
   }
 }
 
@@ -60,7 +73,7 @@ void gameClicks() {
   if (mouseX > 430 && mouseX < 580 && mouseY > 15 && mouseY < 85) {
     mode = PAUSE;
   }
-    if (mouseX > 590 && mouseX < 790 && mouseY > 15 && mouseY < 85) {
+  if (mouseX > 590 && mouseX < 790 && mouseY > 15 && mouseY < 85) {
     mode = OPTIONS;
   }
 }
