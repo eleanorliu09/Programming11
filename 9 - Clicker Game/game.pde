@@ -48,7 +48,7 @@ void game() {
   if (dizzyOn) {
     image(dizzy, x, y, 0.6*d, 0.6*d);
   }
-  if (star2On) {
+  if (sparklesOn) {
     image(sparkles, x, y, 0.75*d, 0.75*d);
   }
 }
