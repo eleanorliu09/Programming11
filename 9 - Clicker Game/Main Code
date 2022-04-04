@@ -58,7 +58,17 @@ int maxScore;
 int speedX;
 int sizeX;
 
+// options color
 color currColor;
+color previewColor; 
+
+// types of images
+PImage star1, dizzy, star2, sparkles;
+boolean stampOn;
+boolean star1On;
+boolean star2On;
+boolean dizzyOn;
+boolean sparklesOn;
 
 void setup() { //unexpected token void is almost missing brace
   size(800, 800);
@@ -99,6 +109,18 @@ void setup() { //unexpected token void is almost missing brace
   sizeX = 500;
   
   currColor = yellow;
+  
+  //images
+  imageMode(CENTER);
+  dizzy = loadImage("dizzy.png");
+  star1 = loadImage("star1.png");
+  star2 = loadImage("star2.png");
+  sparkles = loadImage("sparkles.png");
+  
+  star1On = false;
+  star2On = false;
+  dizzyOn = false;
+  sparklesOn = false;
 }
 
 void draw() {
