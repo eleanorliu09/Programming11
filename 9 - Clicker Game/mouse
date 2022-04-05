@@ -1,5 +1,5 @@
 void mouseReleased() {
-  println(mouseX+ " " + mouseY);
+  //println(mouseX+ " " + mouseY);
   if (mode ==INTRO) {
     introClicks();
   } else if (mode == GAME) {
