@@ -13,6 +13,7 @@ void game() {
   rect(690, 50, 200, 70);
   fill(blue4);
   stroke(blue4);
+  textSize(40);
   text("Score: " + score, 110, 50);
   text("Lives: " + lives, 320, 50);
   text("Pause", 505, 50);
@@ -51,6 +52,7 @@ void game() {
   if (sparklesOn) {
     image(sparkles, x, y, 0.75*d, 0.75*d);
   }
+  gameTactile();
 }
 
 void gameClicks() {
@@ -75,5 +77,21 @@ void gameClicks() {
   }
   if (mouseX > 590 && mouseX < 790 && mouseY > 15 && mouseY < 85) {
     mode = OPTIONS;
+  }
+}
+
+void gameTactile() {
+  if (mouseX > 430 && mouseX < 580 && mouseY > 15 && mouseY < 85) {
+    fill(blue2, 50);
+    stroke(blue4);
+    strokeWeight(5);
+    rect(505, 50, 150, 70);
+  }
+
+  if (mouseX > 590 && mouseX < 790 && mouseY > 15 && mouseY < 85) {
+    fill(blue2, 50);
+    stroke(blue4);
+    strokeWeight(5);
+    rect(690, 50, 200, 70);
   }
 }
