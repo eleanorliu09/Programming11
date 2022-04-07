@@ -41,7 +41,10 @@ void game() {
   text( (timer/60), width/2, 50);
 
   counter--;
-  timer --;
+  
+  if(counter < 0){
+   timer --;
+  }
 }
 
 void gameClicks() {
