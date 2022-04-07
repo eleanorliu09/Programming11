@@ -23,6 +23,9 @@ color green = #5C8001;
 color yellow = #F3DE2C;
 color orange = #FF7F11;
 
+//counter 
+int counter;
+
 void setup() {
   textAlign(CENTER);
   
@@ -48,6 +51,10 @@ void setup() {
   
   //initialize keyboard var
   wkey = skey = upkey = downkey = false;
+  
+  //counter
+  counter = -1;
+  timer = 3600;
 }
 
 void draw() {
