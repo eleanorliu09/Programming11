@@ -11,7 +11,7 @@ void game() {
   circle(ballx, bally, balld);
 
   //move ball
-  if (timer > 0) {
+  if (timer > 0 && counter < 0) {
     ballx += vx;
     bally += vy;
   }
@@ -38,9 +38,10 @@ void game() {
   fill(green);
   text(rightScore, 3 * width/4, 50);
   fill(orange);
-  text(timer, width/2, 50);
+  text( (timer/60), width/2, 50);
 
-  timer -= 0.06;
+  counter--;
+  timer --;
 }
 
 void gameClicks() {
@@ -70,6 +71,7 @@ void bounce() {
     rightScore = Math.max(0, rightScore);
     ballx = width/2;
     bally = height/2;
+    counter = 180;
   }
 
   if (ballx <= ( balld/2)) {
@@ -79,5 +81,6 @@ void bounce() {
     leftScore = Math.max(0, leftScore);
     ballx = width/2;
     bally = height/2;
+    counter = 180;
   }
 }
