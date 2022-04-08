@@ -1,3 +1,13 @@
+import ddf.minim.*;
+import ddf.minim.analysis.*;
+import ddf.minim.effects.*;
+import ddf.minim.signals.*;
+import ddf.minim.spi.*;
+import ddf.minim.ugens.*;
+Minim minim;
+AudioPlayer theme, gain, loss, gameover;
+//https://www.youtube.com/watch?v=QAB2bzVbjdQ
+
 int mode;
 final int INTRO = 1;
 final int GAME = 2;
@@ -22,20 +32,33 @@ color pink = #EE85B5;
 color green = #5C8001;
 color yellow = #F3DE2C;
 color orange = #FF7F11;
-
+color orangeyellow = #ffbb00;
+color darkorange = #ff6a00;
+color hotpink = #ff0084;
+color bluegrey = #6b73db;
+color darkblue2 = #0f178a;
+color gameoverblue = #3972db;
+color introyellow = #ffea00;
 //counter 
 int counter;
 
+//fonts
+PFont myFont;
+
 void setup() {
+  minim = new Minim(this);
+  theme = minim.loadFile("theme.mp3");
   textAlign(CENTER);
-  
+
+
   rightScore = leftScore = 0;
   timer = 60;
   vx = random(-5, 5);
   vy = random(-5, 5);
   size(800, 600);
-  mode = GAME;
-  
+
+  mode = INTRO;
+
   //initialize paddles
   leftx = 0;
   lefty = height/2;
@@ -43,18 +66,22 @@ void setup() {
   rightx = width;
   righty = height/2;
   rightd = 250;
-  
+
   //initalize ball
   ballx = width/2;
   bally = height/2;
   balld = 100;
-  
+
   //initialize keyboard var
   wkey = skey = upkey = downkey = false;
-  
+
   //counter
   counter = -1;
   timer = 3600;
+
+  //fonts
+  myFont = createFont("Night Birds.ttf", 28);
+  textFont(myFont);
 }
 
 void draw() {
