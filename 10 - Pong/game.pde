@@ -24,7 +24,6 @@ void game() {
   if (upkey == true) righty -= 5;
   if (downkey == true) righty += 5;
 
-  bounce();
 
   // center line
   strokeWeight(5);
@@ -41,13 +40,64 @@ void game() {
   text( (timer/60), width/2, 50);
 
   counter--;
-  
-  if(counter < 0){
-   timer --;
+
+  if (counter < 0) {
+    timer --;
+  }
+
+  if (timer < 0) {
+    mode = GAMEOVER;
+  }
+
+  fill(grey);
+  square(425, 525, 50);
+  image(options, 435, 535, 30, 30);
+  square(325, 525, 50);
+  image(pause, 330, 530, 40, 40);
+
+  bounce();
+  counter();
+}
+
+void counter() {
+
+  if (counter > 0) {
+    fill(255, 255, 255, 100);
+    rect(0, 0, width, height);
+    fill(readygreen);
+    textSize(30);
+  }
+
+  if (counter > 150  ) {
+    fill(darkorange);
+    textSize(80);
+    text("3", width/2, height/2);
+  }
+  if (counter > 90 && counter <= 150) {
+    fill(orange);
+    textSize(80);
+    text("2", width/2, height/2);
+  }
+  if (counter > 30 && counter <= 90) {
+    fill(orangeyellow);
+    textSize(80);
+    text("1", width/2, height/2);
+  }
+  if (counter > 0 && counter <= 30) {
+    fill(hotpink);
+    textSize(100);
+    text("GO!", width/2, height/2);
   }
 }
 
 void gameClicks() {
+
+  if (mouseX > 425 && mouseY > 525 && mouseY < 575 && mouseX < 475) {
+    mode = OPTIONS;
+  }
+  if (mouseX >325 && mouseY > 525 && mouseY < 575 && mouseX <375) {
+    mode = PAUSE;
+  }
 }
 
 void bounce() {
@@ -74,7 +124,7 @@ void bounce() {
     rightScore = Math.max(0, rightScore);
     ballx = width/2;
     bally = height/2;
-    counter = 180;
+    counter = 210;
   }
 
   if (ballx <= ( balld/2)) {
@@ -84,6 +134,6 @@ void bounce() {
     leftScore = Math.max(0, leftScore);
     ballx = width/2;
     bally = height/2;
-    counter = 180;
+    counter = 210;
   }
 }
