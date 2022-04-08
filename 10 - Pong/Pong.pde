@@ -5,8 +5,10 @@ import ddf.minim.signals.*;
 import ddf.minim.spi.*;
 import ddf.minim.ugens.*;
 Minim minim;
-AudioPlayer theme, gain, loss, gameover;
+AudioPlayer theme, coin;
 //https://www.youtube.com/watch?v=QAB2bzVbjdQ
+
+PImage pause, options, play;
 
 int mode;
 final int INTRO = 1;
@@ -39,15 +41,40 @@ color bluegrey = #6b73db;
 color darkblue2 = #0f178a;
 color gameoverblue = #3972db;
 color introyellow = #ffea00;
+color introskyblue = #7df6ff;
+color grey = #cfcfcf;
+color readygreen = #2bd95a;
+color lightyellow = #fffcc2;
+
 //counter 
 int counter;
 
 //fonts
 PFont myFont;
 
+//framecount variables
+int framecount;
+
+//intro screen variables
+float ix, iy, ivx, ivy, id;
+
 void setup() {
+  
+  //pause screen variables
+  framecount = 1;
+  
+  //intro screen variables
+  ix = random(200, 600);
+  iy = random(200, 600);
+  ivx = random(0.5, 2);
+  ivy = random(0.5, 2);
+  id = 40;
+  
+  // music!
   minim = new Minim(this);
   theme = minim.loadFile("theme.mp3");
+  coin = minim.loadFile("coin.mp3");
+  
   textAlign(CENTER);
 
 
@@ -82,6 +109,9 @@ void setup() {
   //fonts
   myFont = createFont("Night Birds.ttf", 28);
   textFont(myFont);
+
+  pause = loadImage("pause.png");
+  options = loadImage("options.png");
 }
 
 void draw() {
