@@ -9,6 +9,7 @@ void game() {
   //ball
   fill(yellow);
   circle(ballx, bally, balld);
+  image(currPlanet, ballx - balld/2 , bally - balld/2, balld, balld);
 
   //move ball
   if (timer > 0 && counter < 0) {
@@ -105,16 +106,20 @@ void bounce() {
   if (dist(leftx, lefty, ballx, bally) <= (balld + leftd)/2 ) {
     vx = 0.1*(ballx - leftx);
     vy = 0.1*(bally - lefty);
+    coin.play();
   }
   if (dist(rightx, righty, ballx, bally) <= (balld + rightd)/2 ) {
     vx = 0.1*(ballx - rightx);
     vy = 0.1*(bally - righty);
+    coin.play();
   }
   if (bally >= (height - balld/2) ) {
     vy *= -1;
+    coin.play();
   }
   if (bally <= ( balld/2)) {
     vy *= -1;
+    coin.play();
   }
 
   if (ballx >= (width - balld/2)) {
@@ -125,6 +130,7 @@ void bounce() {
     ballx = width/2;
     bally = height/2;
     counter = 210;
+    coin.play();
   }
 
   if (ballx <= ( balld/2)) {
@@ -135,5 +141,6 @@ void bounce() {
     ballx = width/2;
     bally = height/2;
     counter = 210;
+    coin.play();
   }
 }
