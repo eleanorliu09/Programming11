@@ -10,6 +10,7 @@ AudioPlayer theme, coin;
 
 PImage pause, options, play;
 PImage planet1, planet2, planet3, planet4, planet5, planet6, planet7, planet8, planet9;
+PImage currPlanet;
 
 int mode;
 final int INTRO = 1;
@@ -128,6 +129,7 @@ void setup() {
   planet7 = loadImage("planet7.png");
   planet8 = loadImage("planet8.png");
   planet9 = loadImage("planet9.png");
+  currPlanet = planet7;
 }
 
 void draw() {
