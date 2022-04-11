@@ -10,6 +10,7 @@ void intro() {
   fill(darkblue2);
   rect(300, 150, 200, 100);
   rect(300, 275, 200, 100);
+  
   textSize(50);
   fill(introskyblue);
   text("PLAY!", 400, 215);
@@ -25,8 +26,11 @@ void intro() {
 }
 
 void introClicks() {
-  if (mouseX > 300 && mouseX < 500 && mouseY > 200 && mouseY < 400) {
+  if (mouseX > 300 && mouseX < 500 && mouseY > 150 && mouseY < 250) {
     mode = GAME;
+  }
+  if (mouseX > 300 && mouseX < 500 && mouseY > 275 && mouseY < 375) {
+    mode = OPTIONS;
   }
 }
 
