@@ -51,7 +51,7 @@ void game() {
 
   fill(grey);
   square(425, 525, 50);
-  image(options, 435, 535, 30, 30);
+  image(options, 430, 530, 40, 40);
   square(325, 525, 50);
   image(pause, 330, 530, 40, 40);
 
