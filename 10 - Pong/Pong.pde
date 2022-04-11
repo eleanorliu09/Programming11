@@ -9,6 +9,7 @@ AudioPlayer theme, coin;
 //https://www.youtube.com/watch?v=QAB2bzVbjdQ
 
 PImage pause, options, play;
+PImage planet1, planet2, planet3, planet4, planet5, planet6, planet7, planet8, planet9;
 
 int mode;
 final int INTRO = 1;
@@ -45,6 +46,8 @@ color introskyblue = #7df6ff;
 color grey = #cfcfcf;
 color readygreen = #2bd95a;
 color lightyellow = #fffcc2;
+color optionsblue = #3d5ba8;
+color optionsyel = #fcd526;
 
 //counter 
 int counter;
@@ -59,22 +62,22 @@ int framecount;
 float ix, iy, ivx, ivy, id;
 
 void setup() {
-  
+
   //pause screen variables
   framecount = 1;
-  
+
   //intro screen variables
   ix = random(200, 600);
   iy = random(200, 600);
   ivx = random(0.5, 2);
   ivy = random(0.5, 2);
   id = 40;
-  
+
   // music!
   minim = new Minim(this);
   theme = minim.loadFile("theme.mp3");
   coin = minim.loadFile("coin.mp3");
-  
+
   textAlign(CENTER);
 
 
@@ -110,8 +113,21 @@ void setup() {
   myFont = createFont("Night Birds.ttf", 28);
   textFont(myFont);
 
+  //buttons
   pause = loadImage("pause.png");
   options = loadImage("options.png");
+  play = loadImage("play.png");
+
+  //planets :)
+  planet1 = loadImage("planet1.png");
+  planet2 = loadImage("planet2.png");
+  planet3 = loadImage("planet3.png");
+  planet4 = loadImage("planet4.png");
+  planet5 = loadImage("planet5.png");
+  planet6 = loadImage("planet6.png");
+  planet7 = loadImage("planet7.png");
+  planet8 = loadImage("planet8.png");
+  planet9 = loadImage("planet9.png");
 }
 
 void draw() {
@@ -123,7 +139,7 @@ void draw() {
     pause();
   } else if (mode == GAMEOVER) {
     gameover();
-  } else {
-    println("Mode error: " + mode);
+  } else if (mode == OPTIONS) {
+    options();
   }
 }
