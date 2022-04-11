@@ -4,13 +4,13 @@ void intro() {
 
   fill(introyellow);
   textSize(80);
-  text("PONG!", width/2, 100);
+  text("GALAXY PONG", width/2, 100);
 
 
   fill(darkblue2);
   rect(300, 150, 200, 100);
   rect(300, 275, 200, 100);
-  
+
   textSize(50);
   fill(introskyblue);
   text("PLAY!", 400, 215);
@@ -19,7 +19,7 @@ void intro() {
 
   fill(lightyellow);
   circle(ix, iy, id);
-
+  image(currPlanet, ix - (id/2), iy- (id/2), id, id);
   ix += ivx;
   iy += ivy;
   introBounce();
