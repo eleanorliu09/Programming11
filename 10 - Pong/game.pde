@@ -9,7 +9,12 @@ void game() {
   //ball
   fill(yellow);
   circle(ballx, bally, balld);
-  image(currPlanet, ballx - balld/2 , bally - balld/2, balld, balld);
+  if (!isP3) {
+    image(currPlanet, ballx - balld/2, bally - balld/2, balld, balld);
+  } else if (isP3) {
+    image(currPlanet, ballx - 1.625*balld/2, bally - balld/2, 1.625*balld, balld);
+  }
+
 
   //move ball
   if (timer > 0 && counter < 0) {
@@ -18,12 +23,10 @@ void game() {
   }
 
   //move paddles
-  if (wkey == true) {
-    lefty -= 5;
-  }
-  if (skey == true) lefty += 5;
-  if (upkey == true) righty -= 5;
-  if (downkey == true) righty += 5;
+  if (wkey == true && lefty > balld/2) { lefty -= 5;  }
+  if (skey == true && lefty < height - balld/2) lefty += 5;
+  if (upkey == true && righty > balld/2 ) righty -= 5;
+  if (downkey == true && righty< height - balld/2) righty += 5;
 
 
   // center line
@@ -58,6 +61,10 @@ void game() {
 
   bounce();
   counter();
+
+  if (playerMode == ONEPLAYER) {
+    computerPlay();
+  }
 }
 
 void counter() {
@@ -142,5 +149,11 @@ void bounce() {
     bally = height/2;
     counter = 210;
     coin.play();
+  }
+}
+
+void computerPlay() {
+  if ( ballx >  width/2) {
+    righty = bally;
   }
 }
