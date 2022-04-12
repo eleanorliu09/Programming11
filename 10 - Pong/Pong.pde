@@ -8,9 +8,11 @@ Minim minim;
 AudioPlayer theme, coin;
 //https://www.youtube.com/watch?v=QAB2bzVbjdQ
 
-PImage pause, options, play;
+PImage pause, options, play, stop;
 PImage planet1, planet2, planet3, planet4, planet5, planet6, planet7, planet8, planet9;
 PImage currPlanet;
+int currPlanetOptionsX, currPlanetOptionsY;
+boolean isP3;
 
 int mode;
 final int INTRO = 1;
@@ -18,6 +20,10 @@ final int GAME = 2;
 final int PAUSE = 3;
 final int GAMEOVER = 4;
 final int OPTIONS = 5;
+
+int playerMode;
+final int TWOPLAYER = 6;
+final int ONEPLAYER = 7;
 
 //entity variables
 float leftx, lefty, leftd, rightx, righty, rightd; //paddles
@@ -33,7 +39,7 @@ boolean wkey, skey, upkey, downkey;
 //colours
 color dblue = #093649;
 color pink = #EE85B5;
-color green = #5C8001;
+color green = #359621;
 color yellow = #F3DE2C;
 color orange = #FF7F11;
 color orangeyellow = #ffbb00;
@@ -49,9 +55,12 @@ color readygreen = #2bd95a;
 color lightyellow = #fffcc2;
 color optionsblue = #3d5ba8;
 color optionsyel = #fcd526;
+color lilac = #c374e3;
+color overorange = #f2ae3f;
 
 //counter 
 int counter;
+int gameovercount; 
 
 //fonts
 PFont myFont;
@@ -81,14 +90,13 @@ void setup() {
 
   textAlign(CENTER);
 
-
   rightScore = leftScore = 0;
   timer = 60;
   vx = random(-5, 5);
   vy = random(-5, 5);
   size(800, 600);
 
-  mode = INTRO;
+  mode = GAMEOVER;
 
   //initialize paddles
   leftx = 0;
@@ -118,6 +126,7 @@ void setup() {
   pause = loadImage("pause.png");
   options = loadImage("options.png");
   play = loadImage("play.png");
+  stop = loadImage("stop.png");
 
   //planets :)
   planet1 = loadImage("planet1.png");
@@ -130,6 +139,11 @@ void setup() {
   planet8 = loadImage("planet8.png");
   planet9 = loadImage("planet9.png");
   currPlanet = planet7;
+  isP3 = false;
+  currPlanetOptionsX = 340;
+  currPlanetOptionsY = 260;
+  
+  playerMode = TWOPLAYER; 
 }
 
 void draw() {
