@@ -1,4 +1,6 @@
 void intro() {
+  timer = 3600;
+  
   theme.play();
   background(bluegrey);
 
