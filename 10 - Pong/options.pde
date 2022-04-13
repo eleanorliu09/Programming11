@@ -6,9 +6,10 @@ void options() {
 
   fill(grey);
   stroke(255);
-  strokeWeight(5);
+  strokeWeight(3);
   square(725, 525, 50);
   image(play, 730, 530, 40, 40);
+  tactileOptions(725, 525, 50, 50);
 
   image(planet1, 150, 120, 80, 80);
   image(planet2, 250, 120, 80, 80);
@@ -84,5 +85,14 @@ void optionsClicks() {
     currPlanetOptionsX = 540;
     currPlanetOptionsY = 260;
     isP3 = false;
+  }
+}
+
+void tactileOptions(int a, int b, int c, int d) {
+  if (mouseX > a && mouseX < a + c && mouseY > b && mouseY < b + d) {
+    fill(yellow, 100);
+    stroke(yellow, 100);
+    strokeWeight(3);
+    rect(a, b, c, d);
   }
 }
