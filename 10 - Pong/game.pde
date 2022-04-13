@@ -1,6 +1,8 @@
 void game() {
   background(dblue);
   //paddles
+  strokeWeight(5);
+  stroke(255, 255, 255);
   fill(pink);
   circle(leftx-50, lefty, leftd);
   fill(green);
@@ -23,14 +25,16 @@ void game() {
   }
 
   //move paddles
-  if (wkey == true && lefty > balld/2) { lefty -= 5;  }
+  if (wkey == true && lefty > balld/2) { 
+    lefty -= 5;
+  }
   if (skey == true && lefty < height - balld/2) lefty += 5;
   if (upkey == true && righty > balld/2 ) righty -= 5;
   if (downkey == true && righty< height - balld/2) righty += 5;
 
 
   // center line
-  strokeWeight(5);
+  strokeWeight(3);
   stroke(255);
   line(width/2, 0, width/2, height);
 
@@ -54,10 +58,13 @@ void game() {
   }
 
   fill(grey);
-  square(425, 525, 50);
-  image(options, 430, 530, 40, 40);
   square(325, 525, 50);
   image(pause, 330, 530, 40, 40);
+  square(425, 525, 50);
+  image(options, 430, 530, 40, 40);
+
+  tactileGame(325, 525, 50, 50);
+  tactileGame(425, 525, 50, 50);
 
   bounce();
   counter();
@@ -70,6 +77,7 @@ void game() {
 void counter() {
 
   if (counter > 0) {
+    stroke(255, 255, 255, 100);
     fill(255, 255, 255, 100);
     rect(0, 0, width, height);
     fill(readygreen);
@@ -155,5 +163,14 @@ void bounce() {
 void computerPlay() {
   if ( ballx >  width/2) {
     righty = bally;
+  }
+}
+
+void tactileGame(int a, int b, int c, int d) {
+  if (mouseX > a && mouseX < a + c && mouseY > b && mouseY < b + d) {
+    fill(yellow, 100);
+    stroke(yellow, 100);
+    strokeWeight(3);
+    rect(a, b, c, d);
   }
 }
