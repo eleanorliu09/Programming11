@@ -12,6 +12,10 @@ void intro() {
   rect(300, 275, 200, 100);
   rect(300, 400, 200, 100);
 
+  tactileIntro(300, 150, 200, 100);
+  tactileIntro(300, 275, 200, 100);
+  tactileIntro(300, 400, 200, 100);
+  
   textSize(50);
   fill(introskyblue);
   text("PLAY!", 400, 215);
@@ -54,5 +58,14 @@ void introBounce() {
     ivx *= -1;
     coin.play();
     coin.rewind();
+  }
+}
+
+void tactileIntro(int a, int b, int c, int d) {
+  if (mouseX > a && mouseX < a + c && mouseY > b && mouseY < b + d) {
+    fill(yellow, 100);
+    stroke(yellow, 100);
+    strokeWeight(3);
+    rect(a, b, c, d);
   }
 }
