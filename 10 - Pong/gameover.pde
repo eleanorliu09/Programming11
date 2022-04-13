@@ -41,7 +41,8 @@ void gameover() {
 
 void gameoverClicks() {
   println(mouseX + " " + mouseY);
-  if (mouseX > 300 && mouseX < 500 && mouseY > 300 && mouseY < 400) {
+  if (mouseX > 300 && mouseX < 500 && mouseY > 350 && mouseY < 450) {
+    timer = 3600;
     mode = INTRO;
     leftScore = rightScore = 0;
     gameovercount = 180;
