@@ -96,7 +96,7 @@ void setup() {
   vy = random(-5, 5);
   size(800, 600);
 
-  mode = GAMEOVER;
+  mode = INTRO;
 
   //initialize paddles
   leftx = 0;
