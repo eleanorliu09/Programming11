@@ -25,11 +25,12 @@ void pause() {
 void pauseClicks() {
   if (mouseX > 325 && mouseY > 525 && mouseY < 575 && mouseX <375) {
     mode = GAME;
+    framecount = 1;
   }
   if (mouseX > 425 && mouseY > 525 && mouseY < 575 && mouseX < 475) {
     mode = OPTIONS;
+    framecount = 1;
   }
-  framecount = 1;
 }
 
 void tactilePause(int a, int b, int c, int d) {
