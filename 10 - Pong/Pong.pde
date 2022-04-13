@@ -109,7 +109,7 @@ void setup() {
   //initalize ball
   ballx = width/2;
   bally = height/2;
-  balld = 100;
+  balld = 50;
 
   //initialize keyboard var
   wkey = skey = upkey = downkey = false;
