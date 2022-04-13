@@ -15,25 +15,28 @@ void gameover() {
   fill(overorange);
   textSize(90);
   if (rightScore == leftScore) {
-    text("It's a tie!", width/2, 275);
+    text("It's a tie!", width/2, 300);
   } else if (rightScore > leftScore) {
-    text("Player 2 Wins!", width/2, 275);
+    text("Player 2 Wins!", width/2, 300);
   } else if (leftScore > rightScore) {
-    text("Player 1 Wins!", width/2, 275);
+    text("Player 1 Wins!", width/2, 300);
   }
 
   fill(darkblue2);
   strokeWeight(0);
-  rect(300, 300, 200, 100);
+  rect(300, 350, 200, 100);
   fill(introskyblue);
   textSize(45);
-  text("Try Again", 400, 362);
+  text("Try Again", 400, 412);
 
   fill(grey);
   stroke(255);
-  strokeWeight(5);
+  strokeWeight(3);
   square(725, 525, 50);
   image(stop, 730, 530, 40, 40);
+
+  tactileGameover(300, 350, 200, 100);
+  tactileGameover(725, 525, 50, 50);
 }
 
 void gameoverClicks() {
@@ -46,5 +49,14 @@ void gameoverClicks() {
 
   if ( mouseX > 730 && mouseX < 770 && mouseY > 530 && mouseY < 570) {
     exit();
+  }
+}
+
+void tactileGameover(int a, int b, int c, int d) {
+  if (mouseX > a && mouseX < a + c && mouseY > b && mouseY < b + d) {
+    fill(yellow, 100);
+    stroke(yellow, 100);
+    strokeWeight(3);
+    rect(a, b, c, d);
   }
 }
