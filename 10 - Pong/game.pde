@@ -140,7 +140,6 @@ void bounce() {
   if (ballx >= (width - balld/2)) {
     vx *= -1;
     leftScore++;
-    rightScore--;
     rightScore = Math.max(0, rightScore);
     ballx = width/2;
     bally = height/2;
@@ -151,7 +150,6 @@ void bounce() {
   if (ballx <= ( balld/2)) {
     vx *= -1;
     rightScore++;
-    leftScore--;
     leftScore = Math.max(0, leftScore);
     ballx = width/2;
     bally = height/2;
@@ -161,8 +159,11 @@ void bounce() {
 }
 
 void computerPlay() {
-  if ( ballx >  width/2) {
-    righty = bally;
+  if ( bally >  righty) {
+    righty+=5;
+  }
+  if ( bally <  righty) {
+    righty-=5;
   }
 }
 
