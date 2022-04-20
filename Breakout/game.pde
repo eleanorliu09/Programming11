@@ -28,4 +28,8 @@ void game() {
     vx *= -1;
   }
   // bricks
+  
+  for(int i = 0; i < x.length; i++) {
+  circle(x[i], y[i], brickd);
+  }
 }
