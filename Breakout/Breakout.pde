@@ -1,5 +1,5 @@
 // brick variables
-
+int brickd;
 int[] x;
 int[] y;
 
@@ -33,6 +33,9 @@ void setup() {
   size(600, 600);
   noStroke();
   mode = INTRO;
+  
+  x = new int[100];
+  y = new int[100]; 
 
   // align center 
   rectMode(CENTER);
