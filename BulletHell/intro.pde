@@ -1,3 +1,0 @@
-void intro(){}
-
-void introClicks(){}
