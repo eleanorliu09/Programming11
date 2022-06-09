@@ -8,3 +8,4 @@ https://docs.google.com/document/d/1A3edMbo7RbExnP3BDw_y78Afg8HWR6twA-Pr-uIUSiA/
 
 # Useful Websites
 Website to generate colour palletes for programming projects: https://coolors.co/
+Processing documentation: https://processing.org/reference 
